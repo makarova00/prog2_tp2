@@ -1,0 +1,63 @@
+[
+    {
+        "id": 1,
+        "nombre_artistico": "Lana Del Rey",
+        "miembros": ["Elizabeth Woolridge Grant"],
+        "descripción": "Lana Del Rey es una cantante de pop alternativo conocida por su estilo melancólico, estética vintage y letras sobre amor, nostalgia y drama. Su voz suave y cinematográfica es su sello distintivo.",
+        "imagen": "lana_del_rey.webp",
+        "pais_de_origen": "Estados Unidos",
+        "ano_de_formación": 2005
+    },
+    {
+        "id": 2,
+        "nombre_artistico": "Arctic Monkeys",
+        "miembros": ["Alex Turner", "Jamie Cook", "Nick O'Malley" ,"Matt Helders"],
+        "descripción": "Arctic Monkeys es una banda británica de indie rock formada en Sheffield. Se caracteriza por un estilo que mezcla indie rock con elementos de garage y rock alternativo, con letras observacionales y un sonido que ha ido cambiando y volviéndose más experimental con el tiempo.",
+        "imagen": "arctic_monkeys.webp",
+        "pais_de_origen": "Reino Unido",
+        "ano_de_formación": 2002
+    },
+    {
+        "id": 3,
+        "nombre_artistico": "Eminem",
+        "miembros": ["Marshall Bruce Mathers III"],
+        "descripción": "Eminem es un rapero, compositor y productor reconocido por su técnica sobresaliente, su flow versátil y sus letras intensas y personales. Su obra combina rap crudo con narrativas provocadoras, humor ácido y crítica social, y se caracteriza por juegos de palabras complejos y gran velocidad al rapear.",
+        "imagen": "eminem.webp",
+        "pais_de_origen": "Estados Unidos",
+        "ano_de_formación": 1996
+    },
+    {
+        "id": 4,
+        "nombre_artistico": "Babasónicos",
+        "miembros": ["Adrián Dárgelos" , "Diego Tuñón", "Diego Uma" , "Mariano Roger", "Gabriel Manelli", "Diego Castellano"],
+        "descripción": "Babasónicos es una banda de rock alternativo conocida por su estilo ecléctico, letras provocadoras y constante búsqueda de innovación sonora. Su música combina distintos géneros y destaca por una estética cuidada y una identidad artística muy marcada.",
+        "imagen": "babasonicos.webp",
+        "pais_de_origen": "Argentina",
+        "ano_de_formación": 1991
+    },
+    {
+        "id": 5,
+        "nombre_artistico": "Nirvana",
+        "miembros": ["Kurt Cobain", "Krist Novoselic", "Dave Grohl"],
+        "descripción": "Nirvana fue una banda de rock alternativo conocida por su sonido crudo y emocional, con una fuerte influencia del grunge. Sus canciones combinan intensidad, distorsión y sensibilidad melódica, y reflejan una actitud rebelde y auténtica que marcó a toda una generación.",
+        "pais_de_origen": "Estados Unidos",
+        "ano_de_formación": 1987
+    },
+    {
+        "id": 6,
+        "nombre_artistico": "Ed Sheeran",
+        "miembros": ["Edward Christopher Sheeran"],
+        "descripción": "Ed Sheeran es un cantautor conocido por sus baladas emotivas, su estilo pop acústico y su habilidad para mezclar géneros como pop, folk y R&B. Sus canciones suelen destacar por letras personales y melodías sencillas pero muy pegadizas.",
+        "pais_de_origen": "Reino Unido",
+        "ano_de_formación": 2004
+    },
+    {
+        "id": 7,
+        "nombre_artistico": "Taylor Swift",
+        "miembros": ["Taylor Alison Swift"],
+        "descripción": "Taylor Swift es una cantante y compositora conocida por sus letras narrativas y personales, que abordan relaciones, emociones y experiencias de vida. Su estilo ha evolucionado a lo largo del tiempo, explorando distintos géneros dentro del pop y la música contemporánea.",
+        "pais_de_origen": "Estados Unidos",
+        "ano_de_formación": 2006
+    }
+
+]

@@ -1,0 +1,142 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* ----- ESTILOS HOME ----- */
+
+.home-layout {
+    display: flex;
+    align-items: center;
+    background-color: black;
+}
+
+.home-img {
+    width: 700px;
+    height: auto;
+    display: block;
+    flex-shrink: 0;
+}
+
+.home-text {
+    flex: 1;
+    color: white;
+}
+
+.home-text h1 {
+ font-family: "Lexend Mega", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+.home-text p {
+font-family: "Archivo", sans-serif;
+}
+
+/* ----- ESTILOS NAV ----- */
+
+.logo-navbar {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+.nav-container {
+    max-width: 100%;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+/* ----- ESTILOS 404 ----- */
+
+.img-404 {
+    height: 500px;
+}
+
+
+/* ----- ESTILOS CATALOGO ----- */
+
+.catalogo-section {
+    background-color: #000;
+    color: white;
+    min-height: 100vh;
+}
+
+.album-card {
+    background-color: #000;
+}
+
+.album-cover {
+    background-color: #f3f3f3;
+    padding: 20px;
+}
+
+.album-cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.album-info {
+    padding-top: 18px;
+}
+
+.album-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.album-artist {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: #d9d9d9;
+}
+
+.album-meta {
+    margin-bottom: 6px;
+    color: #d0d0d0;
+}
+
+.album-footer {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.album-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #19e0c7;
+}
+
+.album-btn {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.album-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.catalogo_completo {
+    background-color: black;
+}
+
