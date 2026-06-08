@@ -5,7 +5,7 @@
         "titulo": "Born to die",
         "fecha_de_lanzamiento": "2012-12-27",
         "portada": "born_to_die.webp",
-        "generos": ["Pop", "Indie"],
+        "generos": ["Pop", "Indie"], - таблица
         "precio": 30000
     },
     {

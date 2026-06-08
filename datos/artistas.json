@@ -2,7 +2,7 @@
     {
         "id": 1,
         "nombre_artistico": "Lana Del Rey",
-        "miembros": ["Elizabeth Woolridge Grant"],
+        "miembros": ["Elizabeth Woolridge Grant"], - таблица
         "descripción": "Lana Del Rey es una cantante de pop alternativo conocida por su estilo melancólico, estética vintage y letras sobre amor, nostalgia y drama. Su voz suave y cinematográfica es su sello distintivo.",
         "imagen": "lana_del_rey.webp",
         "pais_de_origen": "Estados Unidos",
