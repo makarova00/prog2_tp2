@@ -1,63 +1,101 @@
 [
     {
         "id": 1,
-        "nombre_artistico": "Lana Del Rey",
-        "miembros": ["Elizabeth Woolridge Grant"], - таблица
-        "descripción": "Lana Del Rey es una cantante de pop alternativo conocida por su estilo melancólico, estética vintage y letras sobre amor, nostalgia y drama. Su voz suave y cinematográfica es su sello distintivo.",
+        "alias": "Lana Del Rey",
+        "miembros": ["Elizabeth Woolridge Grant"],
+        "descripcion": "Lana Del Rey es una cantante de pop alternativo conocida por su estilo melancólico, estética vintage y letras sobre amor, nostalgia y drama. Su voz suave y cinematográfica es su sello distintivo.",
         "imagen": "lana_del_rey.webp",
         "pais_de_origen": "Estados Unidos",
-        "ano_de_formación": 2005
-    },
+        "ano_de_formación": 2005    },
     {
         "id": 2,
-        "nombre_artistico": "Arctic Monkeys",
+        "alias": "Arctic Monkeys",
         "miembros": ["Alex Turner", "Jamie Cook", "Nick O'Malley" ,"Matt Helders"],
-        "descripción": "Arctic Monkeys es una banda británica de indie rock formada en Sheffield. Se caracteriza por un estilo que mezcla indie rock con elementos de garage y rock alternativo, con letras observacionales y un sonido que ha ido cambiando y volviéndose más experimental con el tiempo.",
+        "descripcion": "Arctic Monkeys es una banda británica de indie rock formada en Sheffield. Se caracteriza por un estilo que mezcla indie rock con elementos de garage y rock alternativo, con letras observacionales y un sonido que ha ido cambiando y volviéndose más experimental con el tiempo.",
         "imagen": "arctic_monkeys.webp",
         "pais_de_origen": "Reino Unido",
         "ano_de_formación": 2002
     },
     {
         "id": 3,
-        "nombre_artistico": "Eminem",
+        "alias": "Eminem",
         "miembros": ["Marshall Bruce Mathers III"],
-        "descripción": "Eminem es un rapero, compositor y productor reconocido por su técnica sobresaliente, su flow versátil y sus letras intensas y personales. Su obra combina rap crudo con narrativas provocadoras, humor ácido y crítica social, y se caracteriza por juegos de palabras complejos y gran velocidad al rapear.",
+        "descripcion": "Eminem es un rapero, compositor y productor reconocido por su técnica sobresaliente, su flow versátil y sus letras intensas y personales. Su obra combina rap crudo con narrativas provocadoras, humor ácido y crítica social, y se caracteriza por juegos de palabras complejos y gran velocidad al rapear.",
         "imagen": "eminem.webp",
         "pais_de_origen": "Estados Unidos",
         "ano_de_formación": 1996
     },
     {
         "id": 4,
-        "nombre_artistico": "Babasónicos",
+        "alias": "Babasónicos",
         "miembros": ["Adrián Dárgelos" , "Diego Tuñón", "Diego Uma" , "Mariano Roger", "Gabriel Manelli", "Diego Castellano"],
-        "descripción": "Babasónicos es una banda de rock alternativo conocida por su estilo ecléctico, letras provocadoras y constante búsqueda de innovación sonora. Su música combina distintos géneros y destaca por una estética cuidada y una identidad artística muy marcada.",
+        "descripcion": "Babasónicos es una banda de rock alternativo conocida por su estilo ecléctico, letras provocadoras y constante búsqueda de innovación sonora. Su música combina distintos géneros y destaca por una estética cuidada y una identidad artística muy marcada.",
         "imagen": "babasonicos.webp",
         "pais_de_origen": "Argentina",
         "ano_de_formación": 1991
     },
     {
         "id": 5,
-        "nombre_artistico": "Nirvana",
+        "alias": "Nirvana",
         "miembros": ["Kurt Cobain", "Krist Novoselic", "Dave Grohl"],
-        "descripción": "Nirvana fue una banda de rock alternativo conocida por su sonido crudo y emocional, con una fuerte influencia del grunge. Sus canciones combinan intensidad, distorsión y sensibilidad melódica, y reflejan una actitud rebelde y auténtica que marcó a toda una generación.",
+        "descripcion": "Nirvana fue una banda de rock alternativo conocida por su sonido crudo y emocional, con una fuerte influencia del grunge. Sus canciones combinan intensidad, distorsión y sensibilidad melódica, y reflejan una actitud rebelde y auténtica que marcó a toda una generación.",
+        "imagen": "nirvana.webp",
         "pais_de_origen": "Estados Unidos",
         "ano_de_formación": 1987
     },
     {
         "id": 6,
-        "nombre_artistico": "Ed Sheeran",
+        "alias": "Ed Sheeran",
         "miembros": ["Edward Christopher Sheeran"],
-        "descripción": "Ed Sheeran es un cantautor conocido por sus baladas emotivas, su estilo pop acústico y su habilidad para mezclar géneros como pop, folk y R&B. Sus canciones suelen destacar por letras personales y melodías sencillas pero muy pegadizas.",
+        "descripcion": "Ed Sheeran es un cantautor conocido por sus baladas emotivas, su estilo pop acústico y su habilidad para mezclar géneros como pop, folk y R&B. Sus canciones suelen destacar por letras personales y melodías sencillas pero muy pegadizas.",
+        "imagen": "ed_sheeran.webp",
         "pais_de_origen": "Reino Unido",
         "ano_de_formación": 2004
     },
     {
         "id": 7,
-        "nombre_artistico": "Taylor Swift",
+        "alias": "Taylor Swift",
         "miembros": ["Taylor Alison Swift"],
-        "descripción": "Taylor Swift es una cantante y compositora conocida por sus letras narrativas y personales, que abordan relaciones, emociones y experiencias de vida. Su estilo ha evolucionado a lo largo del tiempo, explorando distintos géneros dentro del pop y la música contemporánea.",
+        "descripcion": "Taylor Swift es una cantante y compositora conocida por sus letras narrativas y personales, que abordan relaciones, emociones y experiencias de vida. Su estilo ha evolucionado a lo largo del tiempo, explorando distintos géneros dentro del pop y la música contemporánea.",
+        "imagen": "taylor_swift.webp",
         "pais_de_origen": "Estados Unidos",
         "ano_de_formación": 2006
-    }
+    },
+    {
+    "id": 8,
+    "alias": "Lady Gaga",
+    "miembros": ["Stefani Joanne Angelina Germanotta"],
+    "descripcion": "Lady Gaga es una cantante, compositora y actriz estadounidense conocida por su estilo pop teatral, su estética provocadora y sus presentaciones visuales impactantes. Su música combina pop, dance, electrónica y baladas, con una identidad artística fuerte y cambiante.",
+    "imagen": "lady_gaga.webp",
+    "pais_de_origen": "Estados Unidos",
+    "ano_de_formación": 2001
+},
+{
+    "id": 9,
+    "alias": "Ludovico Einaudi",
+    "miembros": ["Ludovico Einaudi"],
+    "descripcion": "Ludovico Einaudi es un compositor y pianista italiano conocido por su estilo minimalista y emocional. Su música combina elementos de la música clásica contemporánea con influencias ambientales, creando composiciones íntimas y evocadoras.",
+    "imagen": "ludovico_einaudi.webp",
+    "pais_de_origen": "Italia",
+    "ano_de_formación": 1982
+},
+{
+    "id": 10,
+    "alias": "Metallica",
+    "miembros": ["James Hetfield", "Lars Ulrich", "Kirk Hammett", "Robert Trujillo"],
+    "descripcion": "Metallica es una banda estadounidense de heavy metal conocida por su sonido potente, riffs agresivos y gran influencia en la música metal. Sus composiciones combinan velocidad, técnica y letras intensas, convirtiéndolos en una de las bandas más importantes del género.",
+    "imagen": "metallica.webp",
+    "pais_de_origen": "Estados Unidos",
+    "ano_de_formación": 1981
+},
+{
+    "id": 11,
+    "alias": "The Beatles",
+    "miembros": ["John Lennon", "Paul McCartney", "George Harrison", "Ringo Starr"],
+    "descripcion": "The Beatles fue una banda británica considerada una de las más influyentes de la historia de la música. Su sonido evolucionó desde el pop rock hacia composiciones más experimentales, marcando generaciones con melodías icónicas y una creatividad innovadora.",
+    "imagen": "the_beatles.webp",
+    "pais_de_origen": "Reino Unido",
+    "ano_de_formación": 1960
+}
 
 ]

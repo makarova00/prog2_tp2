@@ -5,7 +5,7 @@
         "titulo": "Born to die",
         "fecha_de_lanzamiento": "2012-12-27",
         "portada": "born_to_die.webp",
-        "generos": ["Pop", "Indie"], - таблица
+        "generos": ["Pop", "Indie"],
         "precio": 30000
     },
     {
@@ -41,7 +41,7 @@
         "titulo": "Infame",
         "fecha_de_lanzamiento": "2003-19-10",
         "portada": "infame.webp",
-        "generos": ["Rock", "Pop rock"],
+        "generos": ["Rock", "Pop"],
         "precio": 32000
     },
     {
@@ -70,5 +70,68 @@
         "portada": "red.webp",
         "generos": ["Pop"],
         "precio": 37000
-    }
+    },
+    {
+    "id": 9,
+    "artista": 8,
+    "titulo": "Born This Way",
+    "fecha_de_lanzamiento": "2011-05-23",
+    "portada": "born_this_way.webp",
+    "generos": ["Pop"],
+    "precio": 28000
+},
+{
+    "id": 10,
+    "artista": 9,
+    "titulo": "Solo Piano",
+    "fecha_de_lanzamiento": "2004-01-01",
+    "portada": "solo_piano.webp",
+    "generos": ["Clásica"],
+    "precio": 40000
+},
+{
+    "id": 11,
+    "artista": 10,
+    "titulo": "Master of Puppets",
+    "fecha_de_lanzamiento": "1986-03-03",
+    "portada": "master_of_puppets.webp",
+    "generos": ["Metal"],
+    "precio": 28500
+},
+{
+    "id": 12,
+    "artista": 11,
+    "titulo": "Abbey Road",
+    "fecha_de_lanzamiento": "1969-09-26",
+    "portada": "abbey_road.webp",
+    "generos": ["Rock", "Pop"],
+    "precio": 34000
+},
+{
+    "id": 13,
+    "artista": 7,
+    "titulo": "1989",
+    "fecha_de_lanzamiento": "2014-10-27",
+    "portada": "1989.webp",
+    "generos": ["Pop"],
+    "precio": 29700
+},
+{
+    "id": 14,
+    "artista": 5,
+    "titulo": "In Utero",
+    "fecha_de_lanzamiento": "1993-09-21",
+    "portada": "in_utero.webp",
+    "generos": ["Rock", "Grunge"],
+    "precio": 40000
+},
+{
+    "id": 15,
+    "artista": 11,
+    "titulo": "Yellow Submarine",
+    "fecha_de_lanzamiento": "1969-01-17",
+    "portada": "yellow_submarine.webp",
+    "generos": ["Rock", "Pop"],
+    "precio": 35000
+}
 ]
