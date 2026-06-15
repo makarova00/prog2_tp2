@@ -68,6 +68,7 @@ font-family: "Archivo", sans-serif;
     background-color: #000;
     color: white;
     min-height: 100vh;
+    position: relative;
 }
 
 .album-card {
@@ -138,5 +139,65 @@ font-family: "Archivo", sans-serif;
 
 .catalogo_completo {
     background-color: black;
+}
+
+/* ----- ESTILOS NO RESULTADOS ----- */
+
+.no-resultados {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 240px;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.no-resultados-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.no-resultados-icon {
+    font-size: 2.5rem;
+    opacity: 0.8;
+}
+
+.no-resultados-text {
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+.no-resultados-subtext {
+    font-size: 1rem;
+    color: #929292;
+    margin: 0;
+}
+/* ----- ESTILOS ARTISTAS ----- */
+
+
+.artist-hero {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 60px;
+    color: white;
+}
+
+.artist-hero-content {
+    background: rgba(0, 0, 0, 0.45);
+    padding: 30px 40px;
+}
+
+.artist-descripcion {
+    max-width: 400px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px 20px;
 }
 
