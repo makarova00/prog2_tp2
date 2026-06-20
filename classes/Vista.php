@@ -57,12 +57,7 @@ class Vista
     {
         return $this->nombre === 'home';
     }
-
-    public function sinContenedor(): bool
-    {
-        return in_array($this->nombre, ['home', 'catalogo_completo']);
-    }
-
+    
     /**
      * Get the value of nombre
      */

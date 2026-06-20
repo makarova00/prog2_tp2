@@ -112,6 +112,15 @@ class Disco
         return $result ?? null;
     }
 
+        /**
+     * Devuelve el precio de la unidad, formateado correctamente
+     */
+    public function precio_formateado(): string
+    {
+        return "$" . number_format($this->precio, 0, ",", ".");
+    }
+
+
   /**
      * Inserta un nuevo disco a la base de datos
      * @param int $artista_id

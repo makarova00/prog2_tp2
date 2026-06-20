@@ -1,204 +1,797 @@
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-    flex: 1;
+  flex: 1;
 }
 
 /* ----- ESTILOS HOME ----- */
 
 .home-layout {
-    display: flex;
-    align-items: center;
-    background-color: black;
+  display: flex;
+  align-items: center;
+  background-color: black;
 }
 
 .home-img {
-    width: 700px;
-    height: auto;
-    display: block;
-    flex-shrink: 0;
+  width: 700px;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
 }
 
 .home-text {
-    flex: 1;
-    color: white;
+  flex: 1;
+  color: white;
 }
 
 .home-text h1 {
- font-family: "Lexend Mega", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 10px;
+  font-family: "Lexend Mega", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 10px;
 }
 .home-text p {
-font-family: "Archivo", sans-serif;
+  font-family: "Archivo", sans-serif;
 }
 
 /* ----- ESTILOS NAV ----- */
 
 .logo-navbar {
-    height: 50px;
-    width: auto;
-    display: block;
+  height: 50px;
+  width: auto;
+  display: block;
 }
 
 .nav-container {
-    max-width: 100%;
-    padding-left: 60px;
-    padding-right: 60px;
+  max-width: 100%;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 /* ----- ESTILOS 404 ----- */
 
 .img-404 {
-    height: 500px;
+  height: 500px;
 }
-
 
 /* ----- ESTILOS CATALOGO ----- */
 
 .catalogo-section {
-    background-color: #000;
-    color: white;
-    min-height: 100vh;
-    position: relative;
+  background-color: #000;
+  color: white;
+  min-height: 100vh;
+  position: relative;
 }
 
 .album-card {
-    background-color: #000;
+  background-color: #000;
 }
 
 .album-cover {
-    background-color: #f3f3f3;
-    padding: 20px;
+  background-color: #f3f3f3;
+  padding: 20px;
 }
 
 .album-cover img {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .album-info {
-    padding-top: 18px;
+  padding-top: 18px;
 }
 
 .album-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-    text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-transform: uppercase;
 }
 
 .album-artist {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 14px;
-    color: #d9d9d9;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #d9d9d9;
 }
 
 .album-meta {
-    margin-bottom: 6px;
-    color: #d0d0d0;
+  margin-bottom: 6px;
+  color: #d0d0d0;
 }
 
 .album-footer {
-    margin-top: 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .album-price {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #19e0c7;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #19e0c7;
 }
 
 .album-btn {
-    text-decoration: none;
-    color: white;
-    border: 1px solid white;
-    border-radius: 999px;
-    padding: 8px 18px;
-    font-weight: 700;
-    display: inline-block;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 700;
+  display: inline-block;
 }
 
 .album-btn:hover {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
 }
 
 .catalogo_completo {
-    background-color: black;
+  background-color: black;
+}
+
+.filtros-toggle {
+  background: none;
+  border: none;
+  color: #d9d9d9;
+  padding: 0;
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.filtros-toggle:hover {
+  color: #19e0c7;
+}
+
+.filtros-catalogo {
+  text-align: left;
 }
 
 /* ----- ESTILOS NO RESULTADOS ----- */
 
 .no-resultados {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 240px;
-    width: 100%;
-    text-align: center;
-    color: white;
-    pointer-events: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 240px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  pointer-events: none;
 }
 
 .no-resultados-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .no-resultados-icon {
-    font-size: 2.5rem;
-    opacity: 0.8;
+  font-size: 2.5rem;
+  opacity: 0.8;
 }
 
 .no-resultados-text {
-    font-size: 1.6rem;
-    margin: 0;
+  font-size: 1.6rem;
+  margin: 0;
 }
 
 .no-resultados-subtext {
-    font-size: 1rem;
-    color: #929292;
-    margin: 0;
+  font-size: 1rem;
+  color: #929292;
+  margin: 0;
 }
 /* ----- ESTILOS ARTISTAS ----- */
 
-
 .artist-hero {
-    height: 300px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    padding: 60px;
-    color: white;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 60px;
+  color: white;
 }
 
 .artist-hero-content {
-    background: rgba(0, 0, 0, 0.45);
-    padding: 30px 40px;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 30px 40px;
 }
 
 .artist-descripcion {
-    max-width: 400px;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 15px 20px;
+  max-width: 400px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px 20px;
 }
 
+/* ----- ESTILOS PRODUCTO ----- */
+
+.producto-detalle {
+  background-color: #000;
+  color: white;
+  min-height: 100vh;
+}
+
+.producto-img-box {
+  background-color: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px;
+}
+
+.producto-img {
+  width: 100%;
+  max-width: 520px;
+  display: block;
+}
+
+.producto-info {
+  padding: 45px;
+  display: flex;
+  flex-direction: column;
+}
+
+.producto-artista {
+  color: #d9d9d9;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.producto-titulo {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+}
+
+.producto-meta {
+  color: #d0d0d0;
+  margin-bottom: 8px;
+}
+
+.producto-meta span {
+  font-weight: 700;
+  color: white;
+}
+
+.producto-descripcion {
+  margin-top: 20px;
+  line-height: 1.6;
+  color: #cfcfcf;
+}
+
+.producto-compra {
+  margin-top: auto;
+}
+
+.producto-precio {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #19e0c7;
+  margin-bottom: 20px;
+}
+
+.producto-form {
+  display: flex;
+  gap: 20px;
+  align-items: end;
+}
+
+.cantidad-box {
+  flex: 1;
+}
+
+.cantidad-box label {
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.producto-btn {
+  flex: 2;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 700;
+}
+
+.producto-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.producto-artista-link {
+  color: #d9d9d9;
+  text-decoration: none;
+}
+
+.volver-catalogo,
+.producto-artista-link {
+  color: #d9d9d9;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.volver-catalogo:hover,
+.producto-artista-link:hover {
+  color: #19e0c7;
+  text-decoration: none;
+}
+
+/* ----- RESPONSIVE ----- */
+
+@media (max-width: 992px) {
+  .producto-detalle {
+    padding: 45px 40px 70px;
+  }
+
+  .producto-detalle .container {
+    max-width: 760px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .volver-catalogo {
+    margin-bottom: 25px;
+    display: inline-block;
+  }
+
+  .producto-card {
+    margin-top: 20px;
+  }
+
+  .producto-img-box {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .producto-img {
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  .producto-info {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 35px 0 0;
+  }
+
+  .producto-artista {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .producto-titulo {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: 25px;
+  }
+
+  .producto-meta {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .producto-descripcion {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 25px;
+    max-width: 100%;
+  }
+
+  .producto-compra {
+    margin-top: 35px;
+  }
+
+  .producto-precio {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .producto-form {
+    display: flex;
+    gap: 20px;
+    align-items: end;
+    max-width: 100%;
+  }
+
+  .cantidad-box {
+    width: 180px;
+    flex: none;
+  }
+
+  .producto-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .catalogo-section {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .catalogo-section h1 {
+    font-size: 2.3rem;
+    margin-bottom: 40px;
+  }
+
+  .catalogo-section aside {
+    margin-bottom: 40px;
+  }
+
+  .catalogo-section aside form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 30px;
+    align-items: start;
+  }
+
+  .catalogo-section aside h2 {
+    grid-column: 1 / -1;
+    margin-top: 20px;
+  }
+
+  .catalogo-section aside h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .catalogo-section aside button,
+  .catalogo-section aside a.btn {
+    grid-column: 1 / -1;
+    max-width: 300px;
+  }
+
+  .album-title {
+    font-size: 1.6rem;
+  }
+
+  .album-artist {
+    font-size: 1rem;
+  }
+
+  .album-price {
+    font-size: 1.8rem;
+  }
+
+  .album-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .album-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .no-resultados {
+    position: static;
+    transform: none;
+    width: auto;
+    margin-top: 40px;
+  }
+
+  .filtros-catalogo {
+    margin-bottom: 30px;
+  }
+
+  .filtros-catalogo form {
+    background-color: #050505;
+    border: 1px solid #222;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .filtros-catalogo h2 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .filtros-catalogo .form-check {
+    margin-bottom: 8px;
+  }
+
+  .catalogo-section h1 {
+    margin-bottom: 10px !important;
+  }
+
+  .filtros-toggle {
+    margin-bottom: 10px;
+  }
+
+  .home-layout {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .home-img {
+        width: 100%;
+        height: 55vh;
+        object-fit: cover;
+        object-position: left center;
+    }
+
+    .home-text {
+        width: 100%;
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    .home-text h1 {
+        font-size: 2.2rem;
+        letter-spacing: 6px;
+        line-height: 1.4;
+    }
+
+    .home-text p {
+        font-size: 1.2rem;
+    }
+
+     main.home {
+        background-color: #000;
+    }
+
+    .home-layout {
+        flex-direction: column ;
+        background-color: #000;
+    }
+
+    .home-text {
+        order: 1;
+        width: 100%;
+        padding: 55px 30px 40px;
+        text-align: center;
+    }
+
+    .home-img {
+        order: 2;
+        width: 100%;
+        height: 50vh;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+@media (max-width: 576px) {
+  .producto-detalle {
+    padding: 30px 20px 55px;
+  }
+
+  .producto-detalle .container {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .volver-catalogo {
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    display: inline-block;
+    padding-left: 8px;
+  }
+
+  .producto-card {
+    margin-top: 10px;
+  }
+
+  .producto-img-box {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 18px;
+  }
+
+  .producto-img {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .producto-info {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 32px 12px 0;
+  }
+
+  .producto-artista {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+
+  .producto-titulo {
+    font-size: 1.9rem;
+    line-height: 1.15;
+    margin-bottom: 22px;
+  }
+
+  .producto-meta {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .producto-descripcion {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-top: 24px;
+  }
+
+  .producto-compra {
+    margin-top: 30px;
+  }
+
+  .producto-precio {
+    font-size: 2rem;
+    margin-bottom: 18px;
+  }
+
+  .producto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: stretch;
+    max-width: 100%;
+  }
+
+  .cantidad-box {
+    width: 100%;
+    flex: auto;
+  }
+
+  .cantidad-box label {
+    font-size: 0.95rem;
+  }
+
+  .producto-btn {
+    width: 100%;
+    flex: auto;
+    padding: 11px 18px;
+    font-size: 0.95rem;
+  }
+
+  .catalogo-section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .catalogo-section h1 {
+    font-size: 2rem;
+    margin-bottom: 35px;
+  }
+
+  .catalogo-section aside {
+    margin-bottom: 35px;
+  }
+
+  .catalogo-section aside form {
+    display: block;
+  }
+
+  .catalogo-section aside h2 {
+    font-size: 1.1rem;
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+
+  .catalogo-section aside h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .form-check {
+    margin-bottom: 10px;
+  }
+
+  .album-cover {
+    padding: 14px;
+  }
+
+  .album-info {
+    padding-top: 15px;
+  }
+
+  .album-title {
+    font-size: 1.45rem;
+  }
+
+  .album-artist {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+
+  .album-meta {
+    font-size: 0.9rem;
+  }
+
+  .album-price {
+    font-size: 1.7rem;
+  }
+
+  .album-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .album-btn {
+    width: 100%;
+    text-align: center;
+    padding: 9px 16px;
+  }
+
+  .no-resultados {
+    position: static;
+    transform: none;
+    width: auto;
+    margin-top: 35px;
+    padding: 0 10px;
+  }
+
+  .no-resultados-icon {
+    font-size: 2rem;
+  }
+
+  .no-resultados-text {
+    font-size: 1.2rem;
+  }
+
+  .no-resultados-subtext {
+    font-size: 0.9rem;
+  }
+
+  .artist-hero {
+    height: auto;
+    padding: 35px 20px;
+  }
+
+  .artist-hero-content {
+    padding: 20px;
+  }
+
+  .artist-descripcion {
+    max-width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .home-img {
+        height: 45vh;
+        object-position: center center;
+    }
+
+    .home-text {
+        padding: 40px 20px;
+    }
+
+    .home-text h1 {
+        font-size: 1.5rem;
+        letter-spacing: 4px;
+        line-height: 1.4;
+    }
+
+    .home-text p {
+        font-size: 1rem;
+    }
+}

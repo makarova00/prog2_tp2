@@ -44,31 +44,25 @@ $vista = Vista::validar_vista($_GET['sec'] ?? 'home');
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active fs-5" href="index.php?sec=catalogo_completo">Catálogo Completo</a>
+                            <a class="nav-link active fs-5" href="index.php?sec=catalogo_completo">Catálogo</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <main class="<?= $vista->getNombre() ?>">
+<main class="<?= $vista->getNombre() ?>">
 
-    <?php if ($vista->esHome()) : ?>
+    <?php if ($vista->getNombre() === 'home') { ?>
 
         <?php require_once "views/hero.php"; ?>
         <?php require_once "views/home.php"; ?>
 
-    <?php elseif ($vista->sinContenedor()) : ?>
+    <?php } else { ?>
 
         <?php require_once "views/{$vista->getNombre()}.php"; ?>
 
-    <?php else : ?>
-
-        <div class="container-fluid px-5">
-            <?php require_once "views/{$vista->getNombre()}.php"; ?>
-        </div>
-
-    <?php endif; ?>
+    <?php } ?>
 
 </main>
 

@@ -1,50 +1,98 @@
 <?PHP
 $id = $_GET['id'] ?? 0;
 
-$comic = Comic::producto_x_id($id);
-
-
+$disco = Disco::producto_x_id($id);
 ?>
 
-<div class="container">
+<div class="producto-detalle container-fluid px-4 py-5">
 
-    <div class="row">
+    <?PHP if (!empty($disco)) { ?>
 
-        <?PHP if (!empty($comic)) { ?>
-            <div class="col">
-                <h1 class="text-center my-5"> <?= $comic->nombre_completo() ?></h1>
-                <div class="card mb-5">
-                    <div class="row g-0">
-                        <div class="col-md-5">
-                            <img src="img/covers/<?= $comic->getPortada(); ?>" class="img-fluid rounded-start border-end" alt="Portada de <?= $comic->nombre_completo() ?>">
+        <?PHP
+        $artista = $disco->getArtista();
+
+        $nombresGeneros = [];
+
+        foreach ($disco->getGeneros() as $genero) {
+            $nombresGeneros[] = $genero->getNombre();
+        }
+        ?>
+
+        <div class="container">
+            <a href="index.php?sec=catalogo_completo" class="volver-catalogo">
+                ← Volver al catálogo
+            </a>
+
+            <div class="row producto-card mt-4">
+
+                <div class="col-12 col-md-6 producto-img-box">
+                    <img 
+                        src="img/covers/<?= $disco->getPortada() ?>" 
+                        class="producto-img" 
+                        alt="Portada del álbum <?= $disco->getTitulo() ?>"
+                    >
+                </div>
+
+                <div class="col-12 col-md-6 producto-info">
+                   <p class="producto-artista">
+    <a href="index.php?sec=catalogo_completo&artistas[]=<?= $artista->getId() ?>" class="producto-artista-link">
+        <?= strtoupper($artista->getNombre_artistico()) ?>
+    </a>
+</p>
+                    <h1 class="producto-titulo">
+                        <?= strtoupper($disco->getTitulo()) ?>
+                    </h1>
+
+                    <p class="producto-meta">
+                        <span>Géneros:</span> <?= implode(", ", $nombresGeneros) ?>
+                    </p>
+
+                    <p class="producto-meta">
+                        <span>Lanzamiento:</span> <?= $disco->getLanzamiento() ?>
+                    </p>
+
+                    <p class="producto-meta">
+                        <span>País de origen:</span> <?= $artista->getPais_de_origen() ?>
+                    </p>
+
+                    <p class="producto-meta">
+                        <span>Año de formación:</span> <?= $artista->getAno_de_formacion() ?>
+                    </p>
+
+                    <p class="producto-descripcion">
+                        <?= $artista->getDescripcion() ?>
+                    </p>
+
+                    <div class="producto-compra">
+                        <div class="producto-precio">
+                            <?= $disco->precio_formateado() ?>
                         </div>
-                        <div class="col-md-7 d-flex flex-column p-3">
-                            <div class="card-body flex-grow-0">
-                                <p class="fs-4 m-0 fw-bold text-danger"><?= $comic->nombre_completo() ?></p>
-                                <h2 class="card-title fs-2 mb-4"><?= $comic->getTitulo(); ?></h2>
-                                <p class="card-text"><?= $comic->getBajada() ?></p>
+
+                        <form action="admin/actions/add_item_acc.php" method="GET" class="producto-form">
+                            <div class="cantidad-box">
+                                <label for="q">Cantidad:</label>
+                                <input type="number" class="form-control" value="1" name="q" id="q" min="1">
                             </div>
 
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><span class="fw-bold">Guion:</span> <?= $comic->getGuion(); ?></li>
-                                <li class="list-group-item"><span class="fw-bold">Arte:</span> <?= $comic->getArte(); ?></li>
-                                <li class="list-group-item"><span class="fw-bold">Publicación:</span> <?= $comic->getPublicacion(); ?></li>
-                            </ul>
+                            <input type="hidden" value="<?= $id ?>" name="id">
 
-                            <div class="card-body flex-grow-0 mt-auto">
-                                <div class="fs-3 mb-3 fw-bold text-center text-danger"><?= $comic->precio_formateado() ?></div>
-                                <a href="#" class="btn btn-danger w-100 fw-bold">COMPRAR</a>
-                            </div>
-                        </div>
+                            <input type="submit" value="AGREGAR A CARRITO" class="producto-btn">
+                        </form>
                     </div>
                 </div>
 
-
             </div>
+        </div>
 
-        <?PHP } else { ?>
-            <div class="col">
-                <h2 class="text-center m-5">No se encontró el producto deseado.</h2>
-            </div>
-        <?PHP } ?>
-    </div>
+    <?PHP } else { ?>
+
+        <div class="container text-center py-5">
+            <h2>No se encontró el producto deseado.</h2>
+            <a href="index.php?sec=catalogo_completo" class="btn btn-light mt-3">
+                Volver al catálogo
+            </a>
+        </div>
+
+    <?PHP } ?>
+
+</div>

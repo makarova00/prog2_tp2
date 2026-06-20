@@ -60,54 +60,69 @@ if (!empty($generosSeleccionados)) {
 
     <div class="row">
 
-        <aside class="col-12 col-lg-2 mb-4">
-            <form action="index.php" method="GET">
-                <input type="hidden" name="sec" value="catalogo_completo">
+        <aside class="col-12 col-lg-2 mb-4 filtros-catalogo">
 
-                <h2 class="fs-5 mb-3">Artistas</h2>
+            <button
+                class="filtros-toggle d-lg-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#filtrosCatalogo"
+                aria-expanded="false"
+                aria-controls="filtrosCatalogo">
+                + Filtros
+            </button>
 
-                <?PHP foreach ($artistas as $artista) { ?>
-                    <div class="form-check text-light mb-2">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="artistas[]"
-                            value="<?= $artista->getId() ?>"
-                            id="artista-<?= $artista->getId() ?>"
-                            <?= in_array($artista->getId(), $artistasSeleccionados) ? 'checked' : '' ?>>
+            <div class="collapse d-lg-block" id="filtrosCatalogo">
+                <form action="index.php" method="GET">
+                    <input type="hidden" name="sec" value="catalogo_completo">
 
-                        <label class="form-check-label" for="artista-<?= $artista->getId() ?>">
-                            <?= $artista->getNombre_artistico() ?>
-                        </label>
-                    </div>
-                <?PHP } ?>
+                    <h2 class="fs-5 mb-3">Artistas</h2>
 
-                <h2 class="fs-5 mt-4 mb-3">Géneros</h2>
+                    <?PHP foreach ($artistas as $artista) { ?>
+                        <div class="form-check text-light mb-2">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="artistas[]"
+                                value="<?= $artista->getId() ?>"
+                                id="artista-<?= $artista->getId() ?>"
+                                <?= in_array($artista->getId(), $artistasSeleccionados) ? 'checked' : '' ?>>
 
-                <?PHP foreach ($generosDisponibles as $genero) { ?>
-                    <div class="form-check text-light mb-2">
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="generos[]"
-                            value="<?= $genero ?>"
-                            id="genero-<?= strtolower(str_replace(' ', '-', $genero)) ?>"
-                            <?= in_array($genero, $generosSeleccionados) ? 'checked' : '' ?>>
+                            <label class="form-check-label" for="artista-<?= $artista->getId() ?>">
+                                <?= $artista->getNombre_artistico() ?>
+                            </label>
+                        </div>
+                    <?PHP } ?>
 
-                        <label class="form-check-label" for="genero-<?= strtolower(str_replace(' ', '-', $genero)) ?>">
-                            <?= $genero ?>
-                        </label>
-                    </div>
-                <?PHP } ?>
+                    <h2 class="fs-5 mt-4 mb-3">Géneros</h2>
 
-                <button type="submit" class="btn btn-outline-light w-100 mt-3">
-                    Filtrar
-                </button>
+                    <?PHP foreach ($generosDisponibles as $genero) { ?>
+                        <div class="form-check text-light mb-2">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="generos[]"
+                                value="<?= $genero ?>"
+                                id="genero-<?= strtolower(str_replace(' ', '-', $genero)) ?>"
+                                <?= in_array($genero, $generosSeleccionados) ? 'checked' : '' ?>>
 
-                <a href="index.php?sec=catalogo_completo" class="btn btn-light w-100 mt-2">
-                    Limpiar
-                </a>
-            </form>
+                            <label class="form-check-label" for="genero-<?= strtolower(str_replace(' ', '-', $genero)) ?>">
+                                <?= $genero ?>
+                            </label>
+                        </div>
+                    <?PHP } ?>
+
+                    <button type="submit" class="btn btn-outline-light w-100 mt-3">
+                        Filtrar
+                    </button>
+
+                    <a href="index.php?sec=catalogo_completo" class="btn btn-light w-100 mt-2">
+                        Limpiar
+                    </a>
+                </form>
+
+            </div>
+
 
         </aside>
 
@@ -133,7 +148,7 @@ if (!empty($generosSeleccionados)) {
                     <?PHP foreach ($catalogo as $disco) { ?>
                         <?PHP $artista = Artista::artista_x_id($disco->getArtista()->getId()); ?>
 
-                        <div class="col-12 col-md-6 col-lg-3">
+                        <div class="col-12 col-md-6 col-lg-4 col-xxl-3">
                             <div class="album-card">
                                 <div class="album-cover">
                                     <img src="img/covers/<?= $disco->getPortada() ?>" alt="Portada del álbum '<?= $disco->getTitulo() ?>'">
@@ -143,7 +158,9 @@ if (!empty($generosSeleccionados)) {
                                     <h2 class="album-title"><?= strtoupper($disco->getTitulo()) ?></h2>
 
                                     <p class="album-artist">
-                                        <?= strtoupper($artista->getNombre_artistico()) ?>
+                                        <a href="index.php?sec=catalogo_completo&artistas[]=<?= $artista->getId() ?>" class="producto-artista-link">
+                                            <?= strtoupper($artista->getNombre_artistico()) ?>
+                                        </a>
                                     </p>
 
                                     <p class="album-meta">
@@ -165,8 +182,8 @@ if (!empty($generosSeleccionados)) {
                                     </p>
 
                                     <div class="album-footer">
-                                        <span class="album-price"><?= $disco->getPrecio() ?></span>
-                                        <a href="#" class="album-btn">VER MÁS</a>
+                                        <span class="album-price"><?= $disco->precio_formateado() ?></span>
+                                        <a href="index.php?sec=producto&id=<?= $disco->getId() ?>" class="album-btn">VER MÁS</a>
                                     </div>
                                 </div>
                             </div>
