@@ -1,7 +1,5 @@
 <?PHP
-require_once 'classes/Disco.php';
-require_once 'classes/Artista.php';
-require_once 'classes/Vista.php';
+require_once 'functions/autoload.php';
 
 $vista = Vista::validar_vista($_GET['sec'] ?? 'home');
 ?>
@@ -47,11 +45,6 @@ $vista = Vista::validar_vista($_GET['sec'] ?? 'home');
 
                         <li class="nav-item">
                             <a class="nav-link active fs-5" href="index.php?sec=catalogo_completo">Catálogo Completo</a>
-                        </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link  fs-5" href="index.php?sec=envios">Envios</a>
                         </li>
                     </ul>
                 </div>

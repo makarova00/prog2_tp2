@@ -6,28 +6,43 @@ class Genero
     private string $nombre;
 
     /**
-     * Devuelve la lista de géneros disponibles
+     * Devuelve el listado completo de generos disponibles
      * 
-     * @return Genero[] Un array de objetos Genero con los datos de los generos
+     * @return Genero[] Un array de objetos Generos
      */
-    public static function obtenerGeneros():Array
+    public static function listado_completo(): array
     {
-        $data = file_get_contents('data/generos.json');
-        $jsonData = json_decode($data);
+        $ObjetoConexion = new Conexion();
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM generos";
 
-        $resultado = [];
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
 
-        foreach ($jsonData as $g) {
-            $genero = new self();
-
-            $genero->id = $g->id;
-            $genero->nombre = $g->nombre;
-
-            $resultado[] = $genero;
-        }
-        return $resultado;
+        $lista = $PDOStatement->fetchAll();
+        return $lista;
     }
 
+    /**
+     * Devuelve los datos de un genero en particular
+     * @param int $idGenero El ID único del genero a mostrar
+     *  
+     * @return ?Genero devuelve un objeto Genero o null     
+     */
+    public static function genero_x_id(int $idGenero): ?Genero
+    {
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM generos WHERE id = ?";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$idGenero]);
+
+        $result = $PDOStatement->fetch(); 
+   
+        return $result ? $result : null;
+    }
 
     /**
      * Get the value of id

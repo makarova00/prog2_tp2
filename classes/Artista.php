@@ -1,18 +1,12 @@
 <?PHP
 class Artista
 {
-
-     /*PROPIEDADES*/
-
     private int $id;
-    private string $alias;
-    private array $miembros;
+    private string $nombre_artistico;
     private string $descripcion;
     private string $imagen;
     private string $pais_de_origen;
-    private int $ano_de_formación;
-
-    /*MÉTODOS*/
+    private int $ano_de_formacion;
 
     /**
      * Devuelve el listado completo de artistas disponibles
@@ -21,29 +15,18 @@ class Artista
      */
     public static function listado_completo(): array
     {
-        $lista = [];
+        $conexion = Conexion::getConexion();
+        $query = "SELECT DISTINCT artistas.* 
+          FROM artistas 
+          JOIN discos ON artistas.id = discos.artista_id;";
 
-        $JSON = file_get_contents('datos/artistas.json');
-        $JSONData = json_decode($JSON);
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
 
-        foreach ($JSONData as $value) {
-
-            $artista = new self();
-
-            $artista->id = $value->id;
-            $artista->alias = $value->alias;
-            $artista->miembros = $value->miembros;
-            $artista->descripcion = $value->descripcion;
-            $artista->imagen = $value->imagen;
-            $artista->pais_de_origen = $value->pais_de_origen;
-            $artista->ano_de_formación = $value->ano_de_formación;
-
-            $lista[] = $artista;
-        }
-
+        $lista = $PDOStatement->fetchAll();
         return $lista;
     }
-
 
     /**
      * Devuelve los datos de un artista en particular
@@ -53,43 +36,91 @@ class Artista
      */
     public static function artista_x_id(int $idArtista): ?Artista
     {
-        $listado = self::listado_completo();
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM artistas WHERE id = ?";
 
-        foreach ($listado as $artista) {
-            if ($artista->id == $idArtista) {
-                return $artista;
-            }
-        }
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$idArtista]);
 
-        return null;
+        $result = $PDOStatement->fetch();
+        return $result ?? null;
+    }
+
+    /**
+     * Inserta un nuevo artista a la base de datos
+     * @param string $nombre_artistico
+     * @param string $descripcion
+     * @param string $imagen
+     * @param string $pais_de_origen 
+     * @param int $ano_de_formacion
+     */
+    public static function insert(string $nombre_artistico, string $descripcion, string $imagen, string $pais_de_origen, int $ano_de_formacion)
+    {
+
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO artistas (`nombre_artistico`, `descripcion`, `imagen`, `pais_de_origen`, `ano_de_formacion`) 
+              VALUES (:nombre_artistico, :descripcion, :imagen, :pais_de_origen, :ano_de_formacion)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'nombre_artistico' => $nombre_artistico,
+                'descripcion' => $descripcion,
+                'imagen' => $imagen,
+                'pais_de_origen' => $pais_de_origen,
+                'ano_de_formacion' => $ano_de_formacion
+            ]
+        );
+    }
+
+    /**
+     * Edita los datos de un personaje en la base de datos
+     * @param string $nombre_artistico
+     * @param string $descripcion
+     * @param string $imagen
+     * @param string $pais_de_origen 
+     * @param int $ano_de_formacion
+     */
+    public function edit(string $nombre_artistico, string $descripcion, string $imagen, string $pais_de_origen, int $ano_de_formacion)
+    {
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE artistas 
+              SET nombre_artistico = :nombre_artistico, 
+                  descripcion = :descripcion, 
+                  imagen = :imagen, 
+                  pais_de_origen = :pais_de_origen, 
+                  ano_de_formacion = :ano_de_formacion 
+              WHERE id = :id";
+
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            'nombre_artistico' => $nombre_artistico,
+            'descripcion' => $descripcion,
+            'imagen' => $imagen,
+            'pais_de_origen' => $pais_de_origen,
+            'ano_de_formacion' => $ano_de_formacion,
+            'id' => $this->id
+        ]);
     }
 
 
+    /**
+     * Elimina esta instancia de la base de datos
+     */
+    public function delete()
+    {
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM artistas WHERE id = ?";
 
-    // /**
-    //  * Devuelve el titulo del artista
-    //  * @param bool $aliasPrimero define si se usa principalmente el alias en vez de el nombre real. De no proveerse se asume false
-    //  * 
-    //  * @return string El titulo compuesto por el nombre de civil y el alias del artista en la configuracion deseada.
-    //  */
-    // public function getTitulo(bool $aliasPrimero = FALSE): string
-    // {
-
-    //     if ($aliasPrimero) {
-    //         $resultado = $this->alias . " (" . $this->nombre . ")";
-    //     } else {
-    //         $resultado = $this->nombre . " (" . $this->alias . ")";
-    //     }
-
-    //     return $resultado;
-    // }
-
-
-    
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$this->id]);
+    }
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -99,7 +130,7 @@ class Artista
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -108,48 +139,28 @@ class Artista
     }
 
     /**
-     * Get the value of alias
-     */ 
-    public function getAlias()
+     * Get the value of nombre_artistico
+     */
+    public function getNombre_artistico()
     {
-        return $this->alias;
+        return $this->nombre_artistico;
     }
 
     /**
-     * Set the value of alias
+     * Set the value of nombre_artistico
      *
      * @return  self
-     */ 
-    public function setAlias($alias)
+     */
+    public function setNombre_artistico($nombre_artistico)
     {
-        $this->alias = $alias;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of miembros
-     */ 
-    public function getMiembros()
-    {
-        return $this->miembros;
-    }
-
-    /**
-     * Set the value of miembros
-     *
-     * @return  self
-     */ 
-    public function setMiembros($miembros)
-    {
-        $this->miembros = $miembros;
+        $this->nombre_artistico = $nombre_artistico;
 
         return $this;
     }
 
     /**
      * Get the value of descripcion
-     */ 
+     */
     public function getDescripcion()
     {
         return $this->descripcion;
@@ -159,7 +170,7 @@ class Artista
      * Set the value of descripcion
      *
      * @return  self
-     */ 
+     */
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
@@ -169,7 +180,7 @@ class Artista
 
     /**
      * Get the value of imagen
-     */ 
+     */
     public function getImagen()
     {
         return $this->imagen;
@@ -179,7 +190,7 @@ class Artista
      * Set the value of imagen
      *
      * @return  self
-     */ 
+     */
     public function setImagen($imagen)
     {
         $this->imagen = $imagen;
@@ -189,7 +200,7 @@ class Artista
 
     /**
      * Get the value of pais_de_origen
-     */ 
+     */
     public function getPais_de_origen()
     {
         return $this->pais_de_origen;
@@ -199,7 +210,7 @@ class Artista
      * Set the value of pais_de_origen
      *
      * @return  self
-     */ 
+     */
     public function setPais_de_origen($pais_de_origen)
     {
         $this->pais_de_origen = $pais_de_origen;
@@ -208,21 +219,21 @@ class Artista
     }
 
     /**
-     * Get the value of ano_de_formación
-     */ 
-    public function getAno_de_formación()
+     * Get the value of ano_de_formacion
+     */
+    public function getAno_de_formacion()
     {
-        return $this->ano_de_formación;
+        return $this->ano_de_formacion;
     }
 
     /**
-     * Set the value of ano_de_formación
+     * Set the value of ano_de_formacion
      *
      * @return  self
-     */ 
-    public function setAno_de_formación($ano_de_formación)
+     */
+    public function setAno_de_formacion($ano_de_formacion)
     {
-        $this->ano_de_formación = $ano_de_formación;
+        $this->ano_de_formacion = $ano_de_formacion;
 
         return $this;
     }

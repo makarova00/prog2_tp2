@@ -1,79 +1,59 @@
 <?PHP
 class Vista
 {
-    private string $nombre;
-    private string $titulo;
+
+    private $id;
+    private $nombre;
+    private $titulo;
+    private $activa;
+    private $restringida;
 
     /**
      * Valida el identificador de una vista y devuelve un objeto con los datos de la misma
-     * @param ?string $identificador El identificador de la vista, o null
+     * @param ?string $vista El identificador de la vista, o null
      *
      * @return Vista devuelve objeto Vista
      */
-    public static function validar_vista(?string $identificador)
+    public static function validar_vista(?string $vista): Vista
     {
 
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM vistas WHERE nombre = ?";
 
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$vista]);
 
-        //OBTENEMOS TODOS LOS DATOS DE NUESTRO JSON
-        $JSON = file_get_contents('datos/vistas.json');
-        $vistasData = json_decode($JSON);
+        $viewData = $PDOStatement->fetch();
 
+        if ($viewData) {
 
-        //RECORREMOS EL JSON
-        foreach ($vistasData as $vista) {
+            if ($viewData->getActiva()) {
+                $resultado = $viewData;
+            } else {
+                $viewNoDisp = new self();
 
+                $viewNoDisp->nombre = 'no_disponible';
+                $viewNoDisp->titulo = 'Página no disponible';
 
-
-            //SI SE ECUENTRA UNA VISTA QUE COORDINE CON LA SOLICITADA
-            if ($vista->nombre == $identificador) {
-
-
-                //CHECKEAMOS QUE ESTÉ ACTIVA
-                if ($vista->activa) {
-
-                    //CHECKEAMOS QUE NO SEA RESTRINGIDA
-                    if ($vista->restringida) {
-
-                        //SI ES RESTRINGIDA, DEVOLVEMOS DATOS 403
-                        $vistaNoDisp = new self();
-
-                        $vistaNoDisp->nombre = '403';
-                        $vistaNoDisp->titulo = 'Página Restringida';
-
-                        return $vistaNoDisp;
-                    } else {
-                        //DEVOLVEMOS LOS DATOS DE LA VISTA
-                        $objVista = new self();
-
-                        $objVista->nombre = $vista->nombre;
-                        $objVista->titulo = $vista->titulo;
-
-                        return $objVista;
-                    }
-                } else {
-                    //DEVOLVEMOS LOS DATOS DE PÁGINA NO DISPONIBLE
-                    $vistaNoDisp = new self();
-
-                    $vistaNoDisp->nombre = 'no_disponible';
-                    $vistaNoDisp->titulo = 'Página no disponible por el mometo';
-                    return $vistaNoDisp;
-                }
+                $resultado = $viewNoDisp;
             }
+        } else {
+
+            $view404 = new self();
+
+            $view404->nombre = '404';
+            $view404->titulo = 'Página no encontrada';
+
+            $resultado = $view404;
         }
 
 
-        //SI NO SE ENCUENTRA, DEVOLVEMOS DATOS DE 404
-        $vista404 = new self();
-
-        $vista404->nombre = "404";
-        $vista404->titulo = "Página no Econtrada";
-
-
-        return $vista404;
+        return $resultado;
     }
 
-    public function esHome(): bool
+
+     public function esHome(): bool
     {
         return $this->nombre === 'home';
     }
@@ -82,7 +62,6 @@ class Vista
     {
         return in_array($this->nombre, ['home', 'catalogo_completo']);
     }
-
 
     /**
      * Get the value of nombre
@@ -120,6 +99,66 @@ class Vista
     public function setTitulo($titulo)
     {
         $this->titulo = $titulo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of activa
+     */
+    public function getActiva()
+    {
+        return $this->activa;
+    }
+
+    /**
+     * Set the value of activa
+     *
+     * @return  self
+     */
+    public function setActiva($activa)
+    {
+        $this->activa = $activa;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of restringida
+     */
+    public function getRestringida()
+    {
+        return $this->restringida;
+    }
+
+    /**
+     * Set the value of restringida
+     *
+     * @return  self
+     */
+    public function setRestringida($restringida)
+    {
+        $this->restringida = $restringida;
 
         return $this;
     }

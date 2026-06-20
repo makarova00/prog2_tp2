@@ -13,7 +13,7 @@ $generosDisponibles = [];
 
 foreach ($catalogo as $disco) {
     foreach ($disco->getGeneros() as $genero) {
-        $generosDisponibles[] = $genero;
+        $generosDisponibles[] = $genero->getNombre();
     }
 }
 
@@ -22,13 +22,19 @@ sort($generosDisponibles);
 
 if (!empty($artistasSeleccionados)) {
     $catalogo = array_filter($catalogo, function ($disco) use ($artistasSeleccionados) {
-        return in_array($disco->getArtista(), $artistasSeleccionados);
+        return in_array($disco->getArtista()->getId(), $artistasSeleccionados);
     });
 }
 
 if (!empty($generosSeleccionados)) {
     $catalogo = array_filter($catalogo, function ($disco) use ($generosSeleccionados) {
-        return !empty(array_intersect($generosSeleccionados, $disco->getGeneros()));
+        $generosDelDisco = [];
+
+        foreach ($disco->getGeneros() as $genero) {
+            $generosDelDisco[] = $genero->getNombre();
+        }
+
+        return !empty(array_intersect($generosSeleccionados, $generosDelDisco));
     });
 }
 ?>
@@ -46,7 +52,7 @@ if (!empty($generosSeleccionados)) {
 <div class="container-fluid px-4 py-5 catalogo-section">
     <h1 class="text-center mb-5">
         <?PHP if ($artistaActual) { ?>
-            CATÁLOGO DE <?= strtoupper($artistaActual->getAlias()) ?>
+            CATÁLOGO DE <?= strtoupper($artistaActual->getNombre_artistico()) ?>
         <?PHP } else { ?>
             CATÁLOGO
         <?PHP } ?>
@@ -71,7 +77,7 @@ if (!empty($generosSeleccionados)) {
                             <?= in_array($artista->getId(), $artistasSeleccionados) ? 'checked' : '' ?>>
 
                         <label class="form-check-label" for="artista-<?= $artista->getId() ?>">
-                            <?= $artista->getAlias() ?>
+                            <?= $artista->getNombre_artistico() ?>
                         </label>
                     </div>
                 <?PHP } ?>
@@ -125,7 +131,7 @@ if (!empty($generosSeleccionados)) {
                     </div>
                 <?php } else { ?>
                     <?PHP foreach ($catalogo as $disco) { ?>
-                        <?PHP $artista = Artista::artista_x_id($disco->getArtista()); ?>
+                        <?PHP $artista = Artista::artista_x_id($disco->getArtista()->getId()); ?>
 
                         <div class="col-12 col-md-6 col-lg-3">
                             <div class="album-card">
@@ -137,22 +143,30 @@ if (!empty($generosSeleccionados)) {
                                     <h2 class="album-title"><?= strtoupper($disco->getTitulo()) ?></h2>
 
                                     <p class="album-artist">
-                                        <?= strtoupper($artista->getAlias()) ?>
+                                        <?= strtoupper($artista->getNombre_artistico()) ?>
                                     </p>
 
                                     <p class="album-meta">
                                         <span class="fw-bold">Géneros:</span>
-                                        <?= implode(", ", $disco->getGeneros()) ?>
+                                        <?PHP
+                                        $nombresGeneros = [];
+
+                                        foreach ($disco->getGeneros() as $genero) {
+                                            $nombresGeneros[] = $genero->getNombre();
+                                        }
+
+                                        echo implode(", ", $nombresGeneros);
+                                        ?>
                                     </p>
 
                                     <p class="album-meta">
                                         <span class="fw-bold">Lanzamiento:</span>
-                                        <?= $disco->getFecha_de_lanzamiento() ?>
+                                        <?= $disco->getLanzamiento() ?>
                                     </p>
 
                                     <div class="album-footer">
-                                        <span class="album-price"><?= $disco->precio_formateado() ?></span>
-                                        <a href="#" class="album-btn">COMPRAR</a>
+                                        <span class="album-price"><?= $disco->getPrecio() ?></span>
+                                        <a href="#" class="album-btn">VER MÁS</a>
                                     </div>
                                 </div>
                             </div>
