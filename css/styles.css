@@ -13,6 +13,17 @@ main {
   flex: 1;
 }
 
+main.home,
+main.quienes_somos {
+  display: flex;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.texto-acento {
+  color: #19e0c7;
+}
+
 /* ----- ESTILOS HOME ----- */
 
 .home-layout {
@@ -31,15 +42,39 @@ main {
 .home-text {
   flex: 1;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
 }
 
 .home-text h1 {
   font-family: "Lexend Mega", sans-serif;
   text-transform: uppercase;
   letter-spacing: 10px;
+  margin: 0;
 }
+
 .home-text p {
   font-family: "Archivo", sans-serif;
+  margin: 0;
+}
+
+.home-text .mt-4 {
+  margin-top: 0 !important;
+}
+
+.home-link-catalogo {
+  color: #d9d9d9;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.home-link-catalogo:hover {
+  color: #19e0c7;
+  text-decoration: none;
 }
 
 /* ----- ESTILOS NAV ----- */
@@ -54,6 +89,81 @@ main {
   max-width: 100%;
   padding-left: 60px;
   padding-right: 60px;
+}
+
+.navbar-nav .nav-link {
+  color: #000;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #8b0f1a;
+}
+
+.navbar-nav .nav-link.active {
+  color: #610c13;
+  font-weight: 800;
+}
+
+/* ----- ESTILOS QUIENES SOMOS ----- */
+
+.quienes-section {
+  background-color: #000;
+  color: white;
+  width: 100%;
+  flex: 1;
+  padding: 45px 60px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.quienes-contenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.quienes-collage {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.quienes-collage img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.quienes-texto {
+  max-width: 520px;
+}
+
+.quienes-subtitulo {
+  color: #19e0c7;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.quienes-texto h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+}
+
+.quienes-texto p {
+  color: #d0d0d0;
+  line-height: 1.7;
+  margin-bottom: 18px;
 }
 
 /* ----- ESTILOS 404 ----- */
@@ -626,6 +736,43 @@ main {
     min-height: 320px;
     margin-top: 0;
   }
+
+  .quienes-section {
+    padding: 55px 40px;
+  }
+
+  .quienes-contenido {
+    max-width: 720px;
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+
+  .quienes-texto {
+    order: 1;
+    max-width: 100%;
+  }
+
+  .quienes-collage {
+    order: 2;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .quienes-subtitulo {
+    margin-bottom: 12px;
+  }
+
+  .quienes-texto h1 {
+    font-size: 2.5rem;
+    line-height: 1.15;
+    margin-bottom: 22px;
+  }
+
+  .quienes-texto p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
 }
 
 @media (max-width: 576px) {
@@ -878,5 +1025,29 @@ main {
 
   .no-resultados-subtext {
     font-size: 0.9rem;
+  }
+
+  .quienes-section {
+    padding: 40px 22px 55px;
+  }
+
+  .quienes-contenido {
+    max-width: 100%;
+    gap: 35px;
+  }
+
+  .quienes-texto h1 {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .quienes-texto p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .quienes-collage {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 }
