@@ -26,15 +26,26 @@ main.quienes_somos {
 
 /* ----- ESTILOS HOME ----- */
 
+.home-section {
+  width: 100%;
+  flex: 1;
+  display: flex;
+}
+
 .home-layout {
+  width: 100%;
+  flex: 1;
   display: flex;
   align-items: center;
   background-color: black;
+  overflow: hidden;
 }
 
 .home-img {
-  width: 700px;
-  height: auto;
+  width: 45%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
   display: block;
   flex-shrink: 0;
 }
