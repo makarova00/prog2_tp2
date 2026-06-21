@@ -39,9 +39,24 @@ class Genero
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute([$idGenero]);
 
-        $result = $PDOStatement->fetch(); 
-   
+        $result = $PDOStatement->fetch();
+
         return $result ? $result : null;
+    }
+
+    /**
+     * Cuenta la cantidad total de géneros cargados en la base de datos.
+     *
+     * @return int Devuelve la cantidad total de registros encontrados en la tabla generos.
+     */
+    public static function cantidad_total(): int
+    {
+        $conexion = Conexion::getConexion();
+        $query = "SELECT COUNT(*) FROM generos";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute();
+
+        return $PDOStatement->fetchColumn();
     }
 
     /**

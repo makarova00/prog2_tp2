@@ -13,11 +13,8 @@ Autenticacion::verify($vista->getRestringida());
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Salón del Disco</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-
     <link href="css/styles.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +57,7 @@ Autenticacion::verify($vista->getRestringida());
                             <a class="nav-link" href="admin/actions/auth_logout.php">Log Out <span class="fw-light"></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link login-link" href="admin/index.php">Ir al Admin</a>
+                            <a class="nav-link admin-link" href="admin/index.php">Ir al Admin</a>
                         </li>
                     </ul>
                 </div>

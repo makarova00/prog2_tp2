@@ -119,6 +119,22 @@ class Artista
     }
 
     /**
+     * Cuenta la cantidad total de artistas cargados en la base de datos
+     * @return int Devuelve la cantidad total de registros encontrados en la tabla artistas
+     */
+    public static function cantidad_total(): int
+    {
+        $conexion = Conexion::getConexion();
+
+        $query = "SELECT COUNT(*) FROM artistas";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute();
+
+        return $PDOStatement->fetchColumn();
+    }
+
+    /**
      * Get the value of id
      */
     public function getId()

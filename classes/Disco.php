@@ -45,7 +45,7 @@ class Disco
     {
         $conexion = Conexion::getConexion();
 
-       $query = "SELECT discos.*, GROUP_CONCAT(dxg.genero_id) AS generos
+        $query = "SELECT discos.*, GROUP_CONCAT(dxg.genero_id) AS generos
               FROM discos
               LEFT JOIN discos_x_generos AS dxg ON discos.id = dxg.disco_id
               GROUP BY discos.id;";
@@ -103,7 +103,7 @@ class Disco
               LEFT JOIN discos_x_generos AS dxg ON discos.id = dxg.disco_id
               WHERE discos.id = ?
               GROUP BY discos.id;";
-        
+
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$idProducto]);
@@ -112,7 +112,7 @@ class Disco
         return $result ?? null;
     }
 
-        /**
+    /**
      * Devuelve el precio de la unidad, formateado correctamente
      */
     public function precio_formateado(): string
@@ -120,15 +120,13 @@ class Disco
         return "$" . number_format($this->precio, 0, ",", ".");
     }
 
-
-  /**
+    /**
      * Inserta un nuevo disco a la base de datos
      * @param int $artista_id
      * @param string $titulo
      * @param string $lanzamiento
      * @param string $portada
      * @param float $precio   
-     * 
      * @return int El id del disco recién insertado
      */
     public static function insert($artista_id, $titulo, $lanzamiento, $portada, $precio): int
@@ -186,6 +184,14 @@ class Disco
         );
     }
 
+    /**
+     * Edita los datos de un disco en la base de datos
+     * @param int $artista_id
+     * @param string $titulo
+     * @param string $lanzamiento
+     * @param string $portada
+     * @param float $precio   
+     */
     public function edit($artista_id, $titulo, $lanzamiento, $portada, $precio)
     {
 
@@ -212,6 +218,21 @@ class Disco
     }
 
     /**
+     * Cuenta la cantidad total de discos cargados en la base de datos
+     * @return int Devuelve la cantidad total de registros encontrados en la tabla discos
+     */
+    public static function cantidad_total(): int
+    {
+        $conexion = Conexion::getConexion();
+        $query = "SELECT COUNT(*) FROM discos";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute();
+
+        return $PDOStatement->fetchColumn();
+    }
+
+    /**
      * Elimina esta instancia de la base de datos
      */
     public function delete()
@@ -226,7 +247,7 @@ class Disco
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -236,7 +257,7 @@ class Disco
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -246,7 +267,7 @@ class Disco
 
     /**
      * Get the value of titulo
-     */ 
+     */
     public function getTitulo()
     {
         return $this->titulo;
@@ -256,7 +277,7 @@ class Disco
      * Set the value of titulo
      *
      * @return  self
-     */ 
+     */
     public function setTitulo($titulo)
     {
         $this->titulo = $titulo;
@@ -266,7 +287,7 @@ class Disco
 
     /**
      * Get the value of artista
-     */ 
+     */
     public function getArtista()
     {
         return $this->artista;
@@ -276,7 +297,7 @@ class Disco
      * Set the value of artista
      *
      * @return  self
-     */ 
+     */
     public function setArtista($artista)
     {
         $this->artista = $artista;
@@ -286,7 +307,7 @@ class Disco
 
     /**
      * Get the value of lanzamiento
-     */ 
+     */
     public function getLanzamiento()
     {
         return $this->lanzamiento;
@@ -296,7 +317,7 @@ class Disco
      * Set the value of lanzamiento
      *
      * @return  self
-     */ 
+     */
     public function setLanzamiento($lanzamiento)
     {
         $this->lanzamiento = $lanzamiento;
@@ -306,7 +327,7 @@ class Disco
 
     /**
      * Get the value of portada
-     */ 
+     */
     public function getPortada()
     {
         return $this->portada;
@@ -316,7 +337,7 @@ class Disco
      * Set the value of portada
      *
      * @return  self
-     */ 
+     */
     public function setPortada($portada)
     {
         $this->portada = $portada;
@@ -326,7 +347,7 @@ class Disco
 
     /**
      * Get the value of generos
-     */ 
+     */
     public function getGeneros()
     {
         return $this->generos;
@@ -336,7 +357,7 @@ class Disco
      * Set the value of generos
      *
      * @return  self
-     */ 
+     */
     public function setGeneros($generos)
     {
         $this->generos = $generos;
@@ -346,7 +367,7 @@ class Disco
 
     /**
      * Get the value of precio
-     */ 
+     */
     public function getPrecio()
     {
         return $this->precio;
@@ -356,7 +377,7 @@ class Disco
      * Set the value of precio
      *
      * @return  self
-     */ 
+     */
     public function setPrecio($precio)
     {
         $this->precio = $precio;
