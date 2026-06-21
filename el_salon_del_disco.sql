@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 15, 2026 at 04:36 AM
+-- Generation Time: Jun 21, 2026 at 04:19 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -65,30 +65,29 @@ CREATE TABLE `discos` (
   `titulo` varchar(256) NOT NULL,
   `lanzamiento` date NOT NULL,
   `portada` varchar(256) NOT NULL,
-  `precio` decimal(11,0) NOT NULL,
-  `stock` int(11) NOT NULL
+  `precio` decimal(11,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `discos`
 --
 
-INSERT INTO `discos` (`id`, `artista_id`, `titulo`, `lanzamiento`, `portada`, `precio`, `stock`) VALUES
-(1, 1, 'Born to die', '2012-12-27', 'born_to_die.webp', 30000, 10),
-(2, 1, 'Honeymoon', '2015-09-18', 'honeymoon.webp', 35000, 17),
-(3, 2, 'AM', '2013-09-06', 'am.webp', 38000, 25),
-(4, 3, 'Encore', '2004-11-12', 'encore.webp', 42000, 20),
-(5, 4, 'Infame', '2003-10-19', 'infame.webp', 32000, 15),
-(6, 5, 'Nevermind', '1991-09-24', 'nevermind.webp', 38000, 6),
-(7, 6, '+', '2011-09-09', '+.webp', 32000, 12),
-(8, 7, 'Red', '2012-10-22', 'red.webp', 37000, 23),
-(9, 8, 'Born This Way', '2011-05-23', 'born_this_way.webp', 28000, 20),
-(10, 9, 'Solo Piano', '2004-01-01', 'solo_piano.webp', 40000, 15),
-(11, 10, 'Master of Puppets', '1986-03-03', 'master_of_puppets.webp', 28500, 5),
-(12, 11, 'Abbey Road', '1969-09-26', 'abbey_road.webp', 34000, 25),
-(13, 7, '1989', '2014-10-27', '1989.webp', 29700, 32),
-(14, 5, 'In Utero', '1993-09-21', 'in_utero.webp', 40000, 7),
-(15, 11, 'Yellow Submarine', '1969-01-17', 'yellow_submarine.webp', 35000, 20);
+INSERT INTO `discos` (`id`, `artista_id`, `titulo`, `lanzamiento`, `portada`, `precio`) VALUES
+(1, 1, 'Born to die', '2012-12-27', 'born_to_die.webp', 30000),
+(2, 1, 'Honeymoon', '2015-09-18', 'honeymoon.webp', 35000),
+(3, 2, 'AM', '2013-09-06', 'am.webp', 38000),
+(4, 3, 'Encore', '2004-11-12', 'encore.webp', 42000),
+(5, 4, 'Infame', '2003-10-19', 'infame.webp', 32000),
+(6, 5, 'Nevermind', '1991-09-24', 'nevermind.webp', 38000),
+(7, 6, '+', '2011-09-09', '+.webp', 32000),
+(8, 7, 'Red', '2012-10-22', 'red.webp', 37000),
+(9, 8, 'Born This Way', '2011-05-23', 'born_this_way.webp', 28000),
+(10, 9, 'Solo Piano', '2004-01-01', 'solo_piano.webp', 40000),
+(11, 10, 'Master of Puppets', '1986-03-03', 'master_of_puppets.webp', 28500),
+(12, 11, 'Abbey Road', '1969-09-26', 'abbey_road.webp', 34000),
+(13, 7, '1989', '2014-10-27', '1989.webp', 29700),
+(14, 5, 'In Utero', '1993-09-21', 'in_utero.webp', 40000),
+(15, 11, 'Yellow Submarine', '1969-01-17', 'yellow_submarine.webp', 35000);
 
 -- --------------------------------------------------------
 
@@ -230,8 +229,28 @@ CREATE TABLE `vistas` (
   `nombre` varchar(256) NOT NULL,
   `titulo` varchar(256) NOT NULL,
   `activa` tinyint(4) NOT NULL,
-  `restrengida` int(4) NOT NULL
+  `restringida` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `vistas`
+--
+
+INSERT INTO `vistas` (`id`, `nombre`, `titulo`, `activa`, `restringida`) VALUES
+(1, 'home', 'Bienvenidos', 1, 0),
+(2, 'catalogo_completo', 'Catálogo', 1, 0),
+(3, 'producto', 'Detalle de Producto', 1, 0),
+(5, 'quienes_somos', '¿Quiénes Somos?', 1, 0),
+(6, 'dashboard', 'Panel de Administración', 1, 0),
+(7, 'admin_discos', 'Administración de Discos', 1, 0),
+(8, 'add_disco', 'Creación de Disco', 1, 0),
+(9, 'edit_disco', 'Edición de Disco', 1, 0),
+(10, 'delete_disco', 'Eliminación de Disco', 1, 0),
+(11, 'admin_artistas', 'Administración de Artistas', 1, 0),
+(12, 'add_artista', 'Creación de Artista', 1, 0),
+(13, 'edit_artista', 'Edición de Artista', 1, 0),
+(14, 'delete_artista', 'Eliminación de Artista\r\n', 1, 0),
+(15, 'login', 'Log in', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -329,7 +348,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `vistas`
 --
 ALTER TABLE `vistas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

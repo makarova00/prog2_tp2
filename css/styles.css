@@ -110,6 +110,10 @@ main.producto {
   transition: color 0.2s ease;
 }
 
+.navbar-nav .nav-link.login-link {
+  color: #19b5a0;
+}
+
 .navbar-nav .nav-link:hover {
   color: #8b0f1a;
 }
@@ -510,6 +514,92 @@ main.producto {
 .producto-artista-link:hover {
   color: #19e0c7;
   text-decoration: none;
+}
+
+/* ----- ESTILOS LOGIN ----- */
+
+.login-section {
+  background-color: #000;
+  color: white;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 460px;
+}
+
+.login-box h1 {
+  font-size: 2.3rem;
+  text-align: center;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-campo {
+  margin-bottom: 24px;
+}
+
+.login-campo label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #d9d9d9;
+}
+
+.login-campo input {
+  width: 100%;
+  background-color: transparent;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.login-campo input:focus {
+  border-color: #19e0c7;
+}
+
+.login-btn {
+  width: 100%;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  border-radius: 999px;
+  padding: 11px 20px;
+  font-weight: 800;
+  margin-top: 10px;
+  transition: all 0.2s ease;
+}
+
+.login-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.login-registro {
+  text-align: center;
+  color: #d0d0d0;
+  margin-top: 28px;
+  margin-bottom: 0;
+}
+
+.login-registro a {
+  color: #d9d9d9;
+  text-decoration: none;
+  font-weight: 800;
+  transition: color 0.2s ease;
+}
+
+.login-registro a:hover {
+  color: #19e0c7;
 }
 
 /* ----- RESPONSIVE ----- */
@@ -1062,4 +1152,13 @@ main.producto {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
+
+  .login-section {
+  padding: 45px 20px;
+}
+
+.login-box h1 {
+  font-size: 2rem;
+  margin-bottom: 32px;
+}
 }

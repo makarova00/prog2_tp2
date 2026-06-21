@@ -2,6 +2,9 @@
 require_once 'functions/autoload.php';
 
 $vista = Vista::validar_vista($_GET['sec'] ?? 'home');
+$userData = $_SESSION['loggedIn'] ?? FALSE;
+Autenticacion::verify($vista->getRestringida());
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -48,6 +51,16 @@ $vista = Vista::validar_vista($_GET['sec'] ?? 'home');
                             <a class="nav-link <?= $vista->getNombre() === 'catalogo_completo' ? 'active' : '' ?>" href="index.php?sec=catalogo_completo">
                                 Catálogo
                             </a>
+                        </li>
+                        <li class="nav-item <?= $userData ? "d-none" : "" ?>">
+                            <a class="nav-link" href="index.php?sec=login">Login</a>
+                        </li>
+
+                        <li class="nav-item <?= $userData ? "" : "d-none" ?>">
+                            <a class="nav-link" href="admin/actions/auth_logout.php">Log Out <span class="fw-light"></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link login-link" href="admin/index.php">Ir al Admin</a>
                         </li>
                     </ul>
                 </div>
