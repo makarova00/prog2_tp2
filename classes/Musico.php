@@ -5,9 +5,50 @@ class Musico
     private string $nombre;
     private Artista $artista;
 
+    private static $createValues = ['id', 'nombre'];
+
+    /**
+     * Devuelve una instancia del objeto Musico, con todas sus propiedades configuradas
+     * @param array $musicoData 
+     * @return Musico
+     */
+    private static function createMusico($musicoData): Musico
+    {
+        $musico = new self();
+
+        foreach (self::$createValues as $value) {
+            $musico->{$value} = $musicoData[$value];
+        }
+
+        $musico->artista = Artista::artista_x_id($musicoData['artista_id']);
+        return $musico;
+    }
+
+    /**
+     * Devuelve el listado completo de musicos disponibles
+     * @return Musico[] Un array de objetos Musico
+     */
+    public static function listado_completo(): array
+    {
+        $conexion = Conexion::getConexion();
+
+        $query = "SELECT * FROM musicos";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute();
+
+        $lista = [];
+
+        while ($result = $PDOStatement->fetch()) {
+            $lista[] = self::createMusico($result);
+        }
+
+        return $lista;
+    }
+
     /**
      * Devuelve todos los músicos que pertenecen a un artista.
-     * 
      * @param Artista $artista El artista al que pertenecen los músicos
      * @return Musico[] Un array de objetos Musico
      */
@@ -28,6 +69,77 @@ class Musico
         }
 
         return $lista;
+    }
+
+    /**
+     * Devuelve los datos de un músico en particular
+     * @param int $idMusico 
+     * @return ?Musico Devuelve un Musico o NULL
+     */
+    public static function musico_x_id(int $idMusico): ?Musico
+    {
+        $conexion = Conexion::getConexion();
+
+        $query = "SELECT * FROM musicos WHERE id = ?";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute([$idMusico]);
+
+        $result = self::createMusico($PDOStatement->fetch());
+        return $result ?? null;
+    }
+
+    /**
+     * Inserta un nuevo músico en la base de datos
+     * @param string $nombre
+     * @param int $artista_id ID del artista al que pertenece el músico
+     */
+    public static function insert(string $nombre, int $artista_id)
+    {
+        $conexion = Conexion::getConexion();
+
+        $query = "INSERT INTO musicos (nombre, artista_id) VALUES (:nombre, :artista_id)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            'nombre' => $nombre,
+            'artista_id' => $artista_id
+        ]);
+    }
+    
+    /**
+     * Edita los datos del músico actual
+     * @param string $nombre 
+     * @param mixed $artista_id ID del artista al que pertenece el músico o NULL si no pertenece a ninguno
+     */
+    public function edit(string $nombre, $artista_id)
+    {
+        $conexion = Conexion::getConexion();
+
+        $query = "UPDATE musicos 
+              SET nombre = :nombre, artista_id = :artista_id
+              WHERE id = :id";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            'nombre' => $nombre,
+            'artista_id' => $artista_id,
+            'id' => $this->id
+        ]);
+    }
+
+    /**
+     * Elimina el músico actual de la base de datos.
+     */
+    public function delete()
+    {
+        $conexion = Conexion::getConexion();
+
+        $query = "DELETE FROM musicos WHERE id = ?";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$this->id]);
     }
 
     /**

@@ -7,12 +7,10 @@ class Genero
 
     /**
      * Devuelve el listado completo de generos disponibles
-     * 
      * @return Genero[] Un array de objetos Generos
      */
     public static function listado_completo(): array
     {
-        $ObjetoConexion = new Conexion();
         $conexion = Conexion::getConexion();
         $query = "SELECT * FROM generos";
 
@@ -27,7 +25,6 @@ class Genero
     /**
      * Devuelve los datos de un genero en particular
      * @param int $idGenero El ID único del genero a mostrar
-     *  
      * @return ?Genero devuelve un objeto Genero o null     
      */
     public static function genero_x_id(int $idGenero): ?Genero

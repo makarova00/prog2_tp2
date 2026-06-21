@@ -889,6 +889,24 @@ main.producto {
   scroll-margin-top: 110px;
 }
 
+.admin-user-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background-color: #000;
+  color: #19e0c7;
+  border: 1px solid #19e0c7;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.admin-user-icon {
+  font-size: 0.9rem;
+}
+
 /* ----- RESPONSIVE ----- */
 
 @media (max-width: 992px) {

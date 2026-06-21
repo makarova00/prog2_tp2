@@ -62,12 +62,15 @@ Autenticacion::verify($vista->getRestringida());
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link bg-danger text-light rounded me-2" href="index.php?sec=panel_usuario">🙍‍♂️​ <?= $userData['nombre_completo'] ?? "" ?> </a>
+                                <span class="admin-user-badge">
+                                    <span class="admin-user-icon">●</span>
+                                    <?= $_SESSION['loggedIn']['nombre_completo'] ?>
+                                </span>
                             </li>
                         <?PHP } ?>
 
                         <li class="nav-item <?= $userData ? "d-none" : "" ?>">
-                            <a class="nav-link fw-bold" href="index.php?sec=login">Login</a>
+                            <a class="nav-link fw-bold" href="index.php?sec=login">Log In</a>
                         </li>
 
                         <li class="nav-item <?= $userData ? "" : "d-none" ?>">
