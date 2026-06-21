@@ -130,7 +130,7 @@ if (!empty($generosSeleccionados)) {
             <div class="row g-4">
 
 
-                <?php if (empty($catalogo)) { ?>
+                <?PHP if (empty($catalogo)) { ?>
                     <div class="no-resultados">
                         <div class="no-resultados-content">
                             <div class="no-resultados-icon">🎵</div>
@@ -144,7 +144,7 @@ if (!empty($generosSeleccionados)) {
                             </p>
                         </div>
                     </div>
-                <?php } else { ?>
+                <?PHP } else { ?>
                     <?PHP foreach ($catalogo as $disco) { ?>
                         <?PHP $artista = Artista::artista_x_id($disco->getArtista()->getId()); ?>
 

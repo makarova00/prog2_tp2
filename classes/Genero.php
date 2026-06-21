@@ -60,6 +60,54 @@ class Genero
     }
 
     /**
+     * Inserta un nuevo género en la base de datos
+     * @param string $nombre Nombre del género a cargar
+     */
+    public static function insert(string $nombre)
+    {
+        $conexion = Conexion::getConexion();
+
+        $query = "INSERT INTO generos (nombre) VALUES (:nombre)";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            'nombre' => $nombre
+        ]);
+    }
+
+    /**
+     * Edita el nombre de un género existente
+     * @param string $nombre Nuevo nombre del género
+     */
+
+    public function edit(string $nombre)
+    {
+        $conexion = Conexion::getConexion();
+       $query = "UPDATE generos 
+               SET nombre = :nombre 
+               WHERE id = :id";
+
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([
+            'nombre' => $nombre,
+            'id' => $this->id
+        ]);
+    }
+
+    /**
+     * Elimina esta instancia de la base de datos
+     */
+    public function delete()
+    {
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM generos WHERE id = ?";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$this->id]);
+    }
+
+    /**
      * Get the value of id
      */
     public function getId()
