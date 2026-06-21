@@ -14,7 +14,8 @@ main {
 }
 
 main.home,
-main.quienes_somos {
+main.quienes_somos,
+main.producto {
   display: flex;
   background-color: #000;
   overflow: hidden;
