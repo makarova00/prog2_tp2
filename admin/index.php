@@ -35,6 +35,11 @@ Autenticacion::verify($vista->getRestringida());
                     <ul class="navbar-nav ms-auto">
                         <?PHP if ($userData) { ?>
                             <li class="nav-item">
+                                <a class="nav-link <?= $vista->getNombre() === 'dashboard' ? 'active' : '' ?>" href="index.php?sec=dashboard">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link <?= $vista->getNombre() === 'admin_generos' ? 'active' : '' ?>" href="index.php?sec=admin_generos">
                                     Administrar Géneros
                                 </a>

@@ -1,2 +1,11 @@
-<h1 class="text-center m-5">404: Página no encontrada</h1>
-<img src="../img/404.png" alt="Deadpool triste" class="d-block mx-auto mb-5">
+<section class="error-page">
+    <img src="../img/404.png" alt="Disco roto" class="img-404">
+
+    <h1>404: Página no encontrada</h1>
+
+    <p>No pudimos encontrar la página solicitada.</p>
+
+    <a href="index.php?sec=dashboard" class="error-link">
+        Volver al Dashboard
+    </a>
+</section>
