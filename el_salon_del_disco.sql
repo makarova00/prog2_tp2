@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 21, 2026 at 04:19 PM
+-- Generation Time: Jun 22, 2026 at 03:29 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -156,7 +156,8 @@ INSERT INTO `generos` (`id`, `nombre`) VALUES
 (7, 'Grunge'),
 (8, 'Folk'),
 (9, 'Clásica'),
-(10, 'Metal');
+(10, 'Metal'),
+(13, 'Punk');
 
 -- --------------------------------------------------------
 
@@ -218,6 +219,13 @@ CREATE TABLE `usuarios` (
   `rol` enum('superadmin','admin','usuario') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `email`, `nombre_usuario`, `nombre_completo`, `password`, `rol`) VALUES
+(1, 'usuario@test.com', 'usuario', 'Primer Usuario', '$2y$12$UsjdTCqhwcN8Zi.fdu.OyuMM/tS4GlDyWdkamweGpvRUD6mqWtX2C', 'usuario');
+
 -- --------------------------------------------------------
 
 --
@@ -242,15 +250,13 @@ INSERT INTO `vistas` (`id`, `nombre`, `titulo`, `activa`, `restringida`) VALUES
 (3, 'producto', 'Detalle de Producto', 1, 0),
 (5, 'quienes_somos', '¿Quiénes Somos?', 1, 0),
 (6, 'dashboard', 'Panel de Administración', 1, 0),
-(7, 'admin_discos', 'Administración de Discos', 1, 0),
-(8, 'add_disco', 'Creación de Disco', 1, 0),
-(9, 'edit_disco', 'Edición de Disco', 1, 0),
-(10, 'delete_disco', 'Eliminación de Disco', 1, 0),
-(11, 'admin_artistas', 'Administración de Artistas', 1, 0),
-(12, 'add_artista', 'Creación de Artista', 1, 0),
-(13, 'edit_artista', 'Edición de Artista', 1, 0),
-(14, 'delete_artista', 'Eliminación de Artista\r\n', 1, 0),
-(15, 'login', 'Log in', 1, 0);
+(15, 'login', 'Log in', 1, 0),
+(16, 'registro', 'Registro', 1, 0),
+(17, 'admin_generos', 'Administración de Géneros', 1, 0),
+(18, 'delete_genero', 'Delete Género', 1, 0),
+(19, 'admin_musicos', 'Administración de Músicos\r\n', 1, 0),
+(20, 'delete_musico', 'Delete Músico', 1, 0),
+(21, 'datos_de_la_alumna', 'Datos de la alumna', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -330,25 +336,25 @@ ALTER TABLE `discos_x_generos`
 -- AUTO_INCREMENT for table `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `musicos`
 --
 ALTER TABLE `musicos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `vistas`
 --
 ALTER TABLE `vistas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

@@ -636,7 +636,9 @@ main.producto {
   text-align: center;
   text-decoration: none;
   display: block;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .admin-card:hover {
@@ -905,6 +907,110 @@ main.producto {
 
 .admin-user-icon {
   font-size: 0.9rem;
+}
+
+/* ----- DATOS DE LA ALUMNA ----- */
+
+.seccion-autora {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 40px;
+  background-color: #000;
+  color: #fff;
+}
+
+.autora-contenido {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 50px;
+  border: 1px solid #222;
+  border-radius: 28px;
+  background-color: #080808;
+}
+
+.autora-texto {
+  flex: 1;
+}
+
+.autora-texto h1 {
+  font-family: inherit;
+  font-size: calc(1.375rem + 1.5vw);
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 28px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: normal;
+}
+
+.autora-presentacion {
+  max-width: 520px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #d9d9d9;
+  margin-bottom: 32px;
+}
+
+.autora-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.autora-contacto a {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #19e0c7;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-weight: 800;
+  transition: all 0.2s ease;
+}
+
+.autora-contacto a:hover {
+  background-color: #19e0c7;
+  color: #000;
+}
+
+.autora-contacto i {
+  font-size: 1.1rem;
+  color: #19e0c7;
+  transition: color 0.2s ease;
+}
+
+.autora-contacto a:hover i {
+  color: #000;
+}
+
+.autora-imagen {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.autora-imagen img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 8px solid #19e0c7;
+  display: block;
+  margin-bottom: 18px;
+}
+
+.autora-nombre {
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
 }
 
 /* ----- RESPONSIVE ----- */
@@ -1183,6 +1289,40 @@ main.producto {
 
   .admin-resumen {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .seccion-autora {
+    padding: 50px 25px;
+  }
+
+  .autora-contenido {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 35px 25px;
+    gap: 32px;
+  }
+
+  .autora-texto h1 {
+    font-size: 2.3rem;
+  }
+
+  .autora-presentacion {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .autora-contacto {
+    align-items: center;
+  }
+
+  .autora-contacto a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .autora-imagen img {
+    width: 220px;
+    height: 220px;
   }
 }
 
@@ -1505,33 +1645,33 @@ main.producto {
   }
 
   .admin-delete-box {
-  padding: 30px 20px;
-}
+    padding: 30px 20px;
+  }
 
-.admin-delete-box h2 {
-  font-size: 2rem;
-}
+  .admin-delete-box h2 {
+    font-size: 2rem;
+  }
 
-.admin-actions-center {
-  flex-direction: column;
-  align-items: stretch;
-}
+  .admin-actions-center {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-.admin-actions-center .admin-btn {
-  text-align: center;
-}
+  .admin-actions-center .admin-btn {
+    text-align: center;
+  }
 
-.admin-form-content {
-  flex-direction: column;
-  align-items: stretch;
-}
+  .admin-form-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-.admin-form-content .admin-actions {
-  flex-direction: column;
-  align-items: stretch;
-}
+  .admin-form-content .admin-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-.admin-form-content .admin-btn {
-  text-align: center;
-}
+  .admin-form-content .admin-btn {
+    text-align: center;
+  }
 }

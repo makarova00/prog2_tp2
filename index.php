@@ -49,8 +49,13 @@ Autenticacion::verify($vista->getRestringida());
                                 Catálogo
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?= $vista->getNombre() === 'datos_de_la_alumna' ? 'active' : '' ?>" href="index.php?sec=datos_de_la_alumna">
+                                Datos de la alumna
+                            </a>
+                        </li>
                         <li class="nav-item <?= $userData ? "d-none" : "" ?>">
-                            <a class="nav-link" href="index.php?sec=login">Login</a>
+                            <a class="nav-link" href="index.php?sec=login">Log In</a>
                         </li>
 
                         <li class="nav-item <?= $userData ? "" : "d-none" ?>">
