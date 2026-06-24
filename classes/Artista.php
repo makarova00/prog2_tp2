@@ -103,7 +103,6 @@ class Artista
         ]);
     }
 
-
     /**
      * Elimina esta instancia de la base de datos
      */

@@ -690,6 +690,40 @@ main.producto {
   margin: 0;
 }
 
+.admin-page-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.admin-delete-img {
+  width: 260px;
+  height: auto;
+  max-height: 160px;
+  object-fit: contain;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto 22px;
+}
+
+.delete-extra {
+  color: #777;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.admin-form-img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 14px;
+  display: block;
+  margin-top: 10px;
+}
+
 .admin-table-box {
   max-width: 950px;
   margin: 0 auto;
