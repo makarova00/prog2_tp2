@@ -669,6 +669,11 @@ main.producto {
   padding: 70px 40px;
 }
 
+.admin-page-wide {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
 .admin-page-header {
   text-align: center;
   margin-bottom: 45px;
@@ -907,6 +912,33 @@ main.producto {
 
 .admin-user-icon {
   font-size: 0.9rem;
+}
+
+.admin-table-box-wide,
+.admin-add-box-wide {
+  max-width: 1500px;
+  width: calc(100% - 80px);
+}
+
+.admin-list-img {
+  width: 300px;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 14px;
+  display: block;
+}
+
+.admin-table-box-wide .admin-table th:first-child,
+.admin-table-box-wide .admin-table td:first-child {
+  width: 340px;
+}
+
+.admin-description-cell {
+  max-width: 360px;
+  line-height: 1.5;
+  color: #555;
 }
 
 /* ----- DATOS DE LA ALUMNA ----- */
@@ -1673,5 +1705,14 @@ main.producto {
 
   .admin-form-content .admin-btn {
     text-align: center;
+  }
+
+  .admin-list-img {
+    width: 110px;
+    height: 80px;
+  }
+
+  .admin-description-cell {
+    min-width: 260px;
   }
 }

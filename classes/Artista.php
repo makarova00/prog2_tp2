@@ -10,28 +10,26 @@ class Artista
 
     /**
      * Devuelve el listado completo de artistas disponibles
-     * 
-     * @return Artista[] Un array de objetos Artistas
+     * @return Artista[] Un array de objetos Artista
      */
     public static function listado_completo(): array
     {
         $conexion = Conexion::getConexion();
-        $query = "SELECT DISTINCT artistas.* 
-          FROM artistas 
-          JOIN discos ON artistas.id = discos.artista_id;";
+
+        $query = "SELECT * FROM artistas";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute();
 
         $lista = $PDOStatement->fetchAll();
+
         return $lista;
     }
 
     /**
      * Devuelve los datos de un artista en particular
      * @param int $idArtista El ID único del artista a mostrar
-     *  
      * @return ?Artista devuelve un objeto Artista o null     
      */
     public static function artista_x_id(int $idArtista): ?Artista

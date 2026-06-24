@@ -54,6 +54,14 @@ Autenticacion::verify($vista->getRestringida());
                                 Datos de la alumna
                             </a>
                         </li>
+                        <?PHP if ($userData) { ?>
+                            <li class="nav-item">
+                                <span class="admin-user-badge">
+                                    <span class="admin-user-icon">●</span>
+                                    <?= $userData['nombre_completo'] ?>
+                                </span>
+                            </li>
+                        <?PHP } ?>
                         <li class="nav-item <?= $userData ? "d-none" : "" ?>">
                             <a class="nav-link" href="index.php?sec=login">Log In</a>
                         </li>
