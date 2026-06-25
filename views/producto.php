@@ -26,19 +26,18 @@ $disco = Disco::producto_x_id($id);
             <div class="row producto-card mt-4">
 
                 <div class="col-12 col-md-6 producto-img-box">
-                    <img 
-                        src="img/covers/<?= $disco->getPortada() ?>" 
-                        class="producto-img" 
-                        alt="Portada del álbum <?= $disco->getTitulo() ?>"
-                    >
+                    <img
+                        src="img/covers/<?= $disco->getPortada() ?>"
+                        class="producto-img"
+                        alt="Portada del álbum <?= $disco->getTitulo() ?>">
                 </div>
 
                 <div class="col-12 col-md-6 producto-info">
-                   <p class="producto-artista">
-    <a href="index.php?sec=catalogo_completo&artistas[]=<?= $artista->getId() ?>" class="producto-artista-link">
-        <?= strtoupper($artista->getNombre_artistico()) ?>
-    </a>
-</p>
+                    <p class="producto-artista">
+                        <a href="index.php?sec=catalogo_completo&artistas[]=<?= $artista->getId() ?>" class="producto-artista-link">
+                            <?= strtoupper($artista->getNombre_artistico()) ?>
+                        </a>
+                    </p>
                     <h1 class="producto-titulo">
                         <?= strtoupper($disco->getTitulo()) ?>
                     </h1>
