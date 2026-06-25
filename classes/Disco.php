@@ -12,7 +12,8 @@ class Disco
 
     /**
      * Devuelve una instancia del objeto Disco, con todas sus propiedades configuradas
-     *@return Disco
+     * @param array $discoData 
+     * @return Disco
      */
     private static function createDisco($discoData): Disco
     {
@@ -38,8 +39,7 @@ class Disco
 
     /**
      * Devuelve el catálgo completo
-     * 
-     * @return Disco[] Un array de objetos Disco
+     * @return Disco[]
      */
     public static function catalogo_completo(): array
     {
@@ -63,30 +63,58 @@ class Disco
     }
 
     /**
-     * Devuelve el catalogo de productos de un artista en particular
-     * @param int $artistaID Un int con el id del artista a buscar
-     * 
-     * @return Disco[] Un Array lleno de instancias de objeto Disco.
+     * Devuelve el catálogo completo o filtrado por artistas y géneros.
+     * @param array $artistasSeleccionados
+     * @param array $generosSeleccionados
+     * @return Disco[]
      */
-    public static function catalogo_x_artista(int $artistaID): array
+    public static function catalogo_filtrado(array $artistasSeleccionados, array $generosSeleccionados): array
     {
-        $conexion = Conexion::getConexion();
-        $query = "SELECT discos.*, GROUP_CONCAT(dxg.genero_id) AS generos
-              FROM discos
-              LEFT JOIN discos_x_generos AS dxg ON discos.id = dxg.disco_id
-              WHERE discos.artista_id = ?
-              GROUP BY discos.id;";
+        $catalogo = self::catalogo_completo();
 
-        $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
-        $PDOStatement->execute([$artistaID]);
+        if (!empty($artistasSeleccionados)) {
+            $catalogoFiltrado = [];
 
-        $catalogo = [];
-        while ($result = $PDOStatement->fetch()) {
-            $catalogo[] = self::createDisco($result);
+            foreach ($catalogo as $disco) {
+                if (in_array($disco->getArtista()->getId(), $artistasSeleccionados)) {
+                    $catalogoFiltrado[] = $disco;
+                }
+            }
+
+            $catalogo = $catalogoFiltrado;
+        }
+
+        if (!empty($generosSeleccionados)) {
+            $catalogoFiltrado = [];
+
+            foreach ($catalogo as $disco) {
+                foreach ($disco->getGeneros() as $genero) {
+                    if (in_array($genero->getId(), $generosSeleccionados)) {
+                        $catalogoFiltrado[] = $disco;
+                        break;
+                    }
+                }
+            }
+
+            $catalogo = $catalogoFiltrado;
         }
 
         return $catalogo;
+    }
+
+    /**
+     * Devuelve los nombres de los géneros del disco separados por coma.
+     * @return string
+     */
+    public function get_generos_nombres(): string
+    {
+        $nombresGeneros = [];
+
+        foreach ($this->generos as $genero) {
+            $nombresGeneros[] = $genero->getNombre();
+        }
+
+        return implode(", ", $nombresGeneros);
     }
 
     /**

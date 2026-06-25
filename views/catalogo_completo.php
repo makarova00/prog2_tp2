@@ -1,58 +1,32 @@
 <?PHP
+
 $artistasSeleccionados = $_GET['artistas'] ?? [];
 $generosSeleccionados = $_GET['generos'] ?? [];
 
-$catalogo = Disco::catalogo_completo();
+$catalogo = Disco::catalogo_filtrado($artistasSeleccionados, $generosSeleccionados);
+
 $artistas = Artista::listado_completo();
+$generosDisponibles = Genero::listado_completo();
 
-$artistaActual = count($artistasSeleccionados) === 1
-    ? Artista::artista_x_id((int)$artistasSeleccionados[0])
-    : null;
+$artistaSeleccionado = Artista::artista_seleccionado($artistasSeleccionados);
 
-$generosDisponibles = [];
-
-foreach ($catalogo as $disco) {
-    foreach ($disco->getGeneros() as $genero) {
-        $generosDisponibles[] = $genero->getNombre();
-    }
-}
-
-$generosDisponibles = array_unique($generosDisponibles);
-sort($generosDisponibles);
-
-if (!empty($artistasSeleccionados)) {
-    $catalogo = array_filter($catalogo, function ($disco) use ($artistasSeleccionados) {
-        return in_array($disco->getArtista()->getId(), $artistasSeleccionados);
-    });
-}
-
-if (!empty($generosSeleccionados)) {
-    $catalogo = array_filter($catalogo, function ($disco) use ($generosSeleccionados) {
-        $generosDelDisco = [];
-
-        foreach ($disco->getGeneros() as $genero) {
-            $generosDelDisco[] = $genero->getNombre();
-        }
-
-        return !empty(array_intersect($generosSeleccionados, $generosDelDisco));
-    });
-}
 ?>
 
-<?PHP if ($artistaActual && $artistaActual->getImagen()) { ?>
-    <section class="artist-hero" style="background-image: url('img/artistas/<?= $artistaActual->getImagen() ?>');">
+<?PHP if ($artistaSeleccionado && $artistaSeleccionado->getImagen()) { ?>
+    <section class="artist-hero" style="background-image: url('img/artistas/<?= $artistaSeleccionado->getImagen() ?>');">
         <div class="artist-hero-content">
             <p class="artist-descripcion">
-                <?= $artistaActual->getDescripcion() ?>
+                <?= $artistaSeleccionado->getDescripcion() ?>
             </p>
         </div>
     </section>
 <?PHP } ?>
 
 <div class="container-fluid px-4 py-5 catalogo-section">
+
     <h1 class="text-center mb-5">
-        <?PHP if ($artistaActual) { ?>
-            CATÁLOGO DE <?= strtoupper($artistaActual->getNombre_artistico()) ?>
+        <?PHP if ($artistaSeleccionado) { ?>
+            CATÁLOGO DE <?= strtoupper($artistaSeleccionado->getNombre_artistico()) ?>
         <?PHP } else { ?>
             CATÁLOGO
         <?PHP } ?>
@@ -73,24 +47,30 @@ if (!empty($generosSeleccionados)) {
             </button>
 
             <div class="collapse d-lg-block" id="filtrosCatalogo">
+
                 <form action="index.php" method="GET">
+
                     <input type="hidden" name="sec" value="catalogo_completo">
 
                     <h2 class="fs-5 mb-3">Artistas</h2>
 
                     <?PHP foreach ($artistas as $artista) { ?>
                         <div class="form-check text-light mb-2">
+
                             <input
                                 class="form-check-input"
                                 type="checkbox"
                                 name="artistas[]"
                                 value="<?= $artista->getId() ?>"
                                 id="artista-<?= $artista->getId() ?>"
-                                <?= in_array($artista->getId(), $artistasSeleccionados) ? 'checked' : '' ?>>
+                                <?PHP if (in_array($artista->getId(), $artistasSeleccionados)) { ?>
+                                    checked
+                                <?PHP } ?>>
 
                             <label class="form-check-label" for="artista-<?= $artista->getId() ?>">
                                 <?= $artista->getNombre_artistico() ?>
                             </label>
+
                         </div>
                     <?PHP } ?>
 
@@ -98,17 +78,21 @@ if (!empty($generosSeleccionados)) {
 
                     <?PHP foreach ($generosDisponibles as $genero) { ?>
                         <div class="form-check text-light mb-2">
+
                             <input
                                 class="form-check-input"
                                 type="checkbox"
                                 name="generos[]"
-                                value="<?= $genero ?>"
-                                id="genero-<?= strtolower(str_replace(' ', '-', $genero)) ?>"
-                                <?= in_array($genero, $generosSeleccionados) ? 'checked' : '' ?>>
+                                value="<?= $genero->getId() ?>"
+                                id="genero-<?= $genero->getId() ?>"
+                                <?PHP if (in_array($genero->getId(), $generosSeleccionados)) { ?>
+                                    checked
+                                <?PHP } ?>>
 
-                            <label class="form-check-label" for="genero-<?= strtolower(str_replace(' ', '-', $genero)) ?>">
-                                <?= $genero ?>
+                            <label class="form-check-label" for="genero-<?= $genero->getId() ?>">
+                                <?= $genero->getNombre() ?>
                             </label>
+
                         </div>
                     <?PHP } ?>
 
@@ -119,20 +103,22 @@ if (!empty($generosSeleccionados)) {
                     <a href="index.php?sec=catalogo_completo" class="btn btn-light w-100 mt-2">
                         Limpiar
                     </a>
+
                 </form>
 
             </div>
 
-
         </aside>
 
         <section class="col-12 col-lg-10">
+
             <div class="row g-4">
 
-
                 <?PHP if (empty($catalogo)) { ?>
+
                     <div class="no-resultados">
                         <div class="no-resultados-content">
+
                             <div class="no-resultados-icon">🎵</div>
 
                             <p class="no-resultados-text">
@@ -142,38 +128,37 @@ if (!empty($generosSeleccionados)) {
                             <p class="no-resultados-subtext">
                                 Probá cambiando o eliminando algunos filtros.
                             </p>
+
                         </div>
                     </div>
+
                 <?PHP } else { ?>
+
                     <?PHP foreach ($catalogo as $disco) { ?>
-                        <?PHP $artista = Artista::artista_x_id($disco->getArtista()->getId()); ?>
 
                         <div class="col-12 col-md-6 col-lg-4 col-xxl-3">
+
                             <div class="album-card">
+
                                 <div class="album-cover">
-                                    <img src="img/covers/<?= $disco->getPortada() ?>" alt="Portada del álbum '<?= $disco->getTitulo() ?>'">
+                                    <img src="img/covers/<?= $disco->getPortada() ?>" alt="Portada del álbum <?= $disco->getTitulo() ?>">
                                 </div>
 
                                 <div class="album-info">
-                                    <h2 class="album-title"><?= strtoupper($disco->getTitulo()) ?></h2>
+
+                                    <h2 class="album-title">
+                                        <?= strtoupper($disco->getTitulo()) ?>
+                                    </h2>
 
                                     <p class="album-artist">
-                                        <a href="index.php?sec=catalogo_completo&artistas[]=<?= $artista->getId() ?>" class="producto-artista-link">
-                                            <?= strtoupper($artista->getNombre_artistico()) ?>
+                                        <a href="index.php?sec=catalogo_completo&artistas[]=<?= $disco->getArtista()->getId() ?>" class="producto-artista-link">
+                                            <?= strtoupper($disco->getArtista()->getNombre_artistico()) ?>
                                         </a>
                                     </p>
 
                                     <p class="album-meta">
                                         <span class="fw-bold">Géneros:</span>
-                                        <?PHP
-                                        $nombresGeneros = [];
-
-                                        foreach ($disco->getGeneros() as $genero) {
-                                            $nombresGeneros[] = $genero->getNombre();
-                                        }
-
-                                        echo implode(", ", $nombresGeneros);
-                                        ?>
+                                        <?= $disco->get_generos_nombres() ?>
                                     </p>
 
                                     <p class="album-meta">
@@ -182,15 +167,29 @@ if (!empty($generosSeleccionados)) {
                                     </p>
 
                                     <div class="album-footer">
-                                        <span class="album-price"><?= $disco->precio_formateado() ?></span>
-                                        <a href="index.php?sec=producto&id=<?= $disco->getId() ?>" class="album-btn">VER MÁS</a>
+                                        <span class="album-price">
+                                            <?= $disco->precio_formateado() ?>
+                                        </span>
+
+                                        <a href="index.php?sec=producto&id=<?= $disco->getId() ?>" class="album-btn">
+                                            VER MÁS
+                                        </a>
                                     </div>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     <?PHP } ?>
+
                 <?PHP } ?>
+
             </div>
+
         </section>
+
     </div>
+
 </div>
