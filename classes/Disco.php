@@ -161,7 +161,7 @@ class Disco
     {
 
         $conexion = Conexion::getConexion();
-        $query = "INSERT INTO disco VALUES (NULL, :artista_id, :titulo, :lanzamiento, :portada, :precio)";
+        $query = "INSERT INTO discos VALUES (NULL, :artista_id, :titulo, :lanzamiento, :portada, :precio)";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute(

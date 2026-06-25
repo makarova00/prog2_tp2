@@ -18,9 +18,7 @@ class Autenticacion
         echo "</pre>";
 
         if ($datosUsuario) {
-            // SE ENCONTRÓ EL USUARIO EN LA BASE DE DATOS, PROCEDEMOS A LOGUEAR";
             if (password_verify($password, $datosUsuario->getPassword())) {
-                //EL PASSWORD ES CORRECTO
 
                 echo "EL PASSWORD ES CORRECTO";
                 $datosLogin['username'] = $datosUsuario->getNombre_usuario();
@@ -32,12 +30,10 @@ class Autenticacion
 
                 return $datosLogin['rol'];
             } else {
-                //EL PASSWORD NO ES CORRECTO
                 Alerta::add_alerta('danger', "El password ingresado no es correcto.");
                 return FALSE;
             }
         } else {
-            //NO SE ENCONTRÓ EL USUARIO EN LA BASE DE DATOS
             Alerta::add_alerta('warning', "El usuario ingresado no se encontró en nuestra base de datos.");
             return NULL;
         }
@@ -64,28 +60,28 @@ class Autenticacion
     public static function verify($nivel = 0)
     {
 
-        if (!$nivel) { //RESTRICCION NIVEL 0 - ACCESO PÚBLICO
-            return TRUE; //SIGA PARA ADELANTE!
+        if (!$nivel) { 
+            return TRUE; 
         }
 
-        if (isset($_SESSION['loggedIn'])) {  //RESTRICCION NIVEL 1 o + - ACCESO RESTRINGIDO
+        if (isset($_SESSION['loggedIn'])) { 
 
-            if ($nivel > 1) { //RESTRICCION NIVEL 2 - ACCESO ÚNICAMENTE ADMINISTRADORES
+            if ($nivel > 1) { 
 
                 if (
                     $_SESSION['loggedIn']['rol'] == "admin"
                     or
                     $_SESSION['loggedIn']['rol'] == "superadmin"
                 ) {
-                    return TRUE; //SIGA PARA ADELANTE!
+                    return TRUE; 
                 } else {
 
                     Alerta::add_alerta('danger', "Sus credenciales no tienen permiso para ingresar a esta sección.");
                     header('location: ../admin/index.php?sec=login');
                     return FALSE;
                 }
-            } else { //RESTRICCION NIVEL 1 - ACCESO PARA TODOS LOS USUARIOS
-                return TRUE; //SIGA PARA ADELANTE!
+            } else {
+                return TRUE;
             }
         } else {
 
