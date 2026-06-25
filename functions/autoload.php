@@ -1,6 +1,10 @@
 <?PHP
 session_start();
 
+/**
+ * Carga automáticamente una clase desde la carpeta classes
+ * @param string $nombreClase
+ */
 function autoloadClasses($nombreClase)
 {
 

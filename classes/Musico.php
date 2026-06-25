@@ -48,30 +48,6 @@ class Musico
     }
 
     /**
-     * Devuelve todos los músicos que pertenecen a un artista.
-     * @param Artista $artista El artista al que pertenecen los músicos
-     * @return Musico[] Un array de objetos Musico
-     */
-    public static function musicos_x_artista(Artista $artista): array
-    {
-        $conexion = Conexion::getConexion();
-
-        $query = "SELECT * FROM musicos WHERE artista_id = ?";
-
-        $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $PDOStatement->execute([$artista->getId()]);
-
-        $lista = $PDOStatement->fetchAll();
-
-        foreach ($lista as $musico) {
-            $musico->setArtista($artista);
-        }
-
-        return $lista;
-    }
-
-    /**
      * Devuelve los datos de un músico en particular
      * @param int $idMusico 
      * @return ?Musico Devuelve un Musico o NULL

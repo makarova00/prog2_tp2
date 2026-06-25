@@ -2,16 +2,15 @@
 class Vista
 {
 
-    private $id;
-    private $nombre;
-    private $titulo;
-    private $activa;
-    private $restringida;
+    private int $id;
+    private string $nombre;
+    private string $titulo;
+    private int $activa;
+    private int $restringida;
 
     /**
      * Valida el identificador de una vista y devuelve un objeto con los datos de la misma
      * @param ?string $vista El identificador de la vista, o null
-     *
      * @return Vista devuelve objeto Vista
      */
     public static function validar_vista(?string $vista): Vista
@@ -41,23 +40,14 @@ class Vista
         } else {
 
             $view404 = new self();
-
             $view404->nombre = '404';
             $view404->titulo = 'Página no encontrada';
-
             $resultado = $view404;
         }
-
 
         return $resultado;
     }
 
-
-     public function esHome(): bool
-    {
-        return $this->nombre === 'home';
-    }
-    
     /**
      * Get the value of nombre
      */

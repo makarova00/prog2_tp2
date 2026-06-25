@@ -1,8 +1,4 @@
 <?PHP
-
-/**
- * Clase para proveer la conexión de PDO al proyecto.
- */
 class Conexion
 {
 
