@@ -7,15 +7,8 @@ $disco = Disco::producto_x_id($id);
 <div class="producto-detalle container-fluid px-4 py-5">
 
     <?PHP if (!empty($disco)) { ?>
-
         <?PHP
         $artista = $disco->getArtista();
-
-        $nombresGeneros = [];
-
-        foreach ($disco->getGeneros() as $genero) {
-            $nombresGeneros[] = $genero->getNombre();
-        }
         ?>
 
         <div class="container">
@@ -43,7 +36,7 @@ $disco = Disco::producto_x_id($id);
                     </h1>
 
                     <p class="producto-meta">
-                        <span>Géneros:</span> <?= implode(", ", $nombresGeneros) ?>
+                        <span>Géneros:</span> <?= $disco->get_generos_nombres() ?>
                     </p>
 
                     <p class="producto-meta">
@@ -59,7 +52,7 @@ $disco = Disco::producto_x_id($id);
                     </p>
 
                     <p class="producto-descripcion">
-                        <?= $artista->getDescripcion() ?>
+                        <?= $disco->getDescripcion() ?>
                     </p>
 
                     <div class="producto-compra">

@@ -64,7 +64,7 @@ $artistaSeleccionado = Artista::artista_seleccionado($artistasSeleccionados);
                                 value="<?= $artista->getId() ?>"
                                 id="artista-<?= $artista->getId() ?>"
                                 <?PHP if (in_array($artista->getId(), $artistasSeleccionados)) { ?>
-                                    checked
+                                checked
                                 <?PHP } ?>>
 
                             <label class="form-check-label" for="artista-<?= $artista->getId() ?>">
@@ -86,7 +86,7 @@ $artistaSeleccionado = Artista::artista_seleccionado($artistasSeleccionados);
                                 value="<?= $genero->getId() ?>"
                                 id="genero-<?= $genero->getId() ?>"
                                 <?PHP if (in_array($genero->getId(), $generosSeleccionados)) { ?>
-                                    checked
+                                checked
                                 <?PHP } ?>>
 
                             <label class="form-check-label" for="genero-<?= $genero->getId() ?>">
@@ -161,9 +161,8 @@ $artistaSeleccionado = Artista::artista_seleccionado($artistasSeleccionados);
                                         <?= $disco->get_generos_nombres() ?>
                                     </p>
 
-                                    <p class="album-meta">
-                                        <span class="fw-bold">Lanzamiento:</span>
-                                        <?= $disco->getLanzamiento() ?>
+                                    <p class="album-descripcion">
+                                        <?= $disco->descripcion_reducida() ?>
                                     </p>
 
                                     <div class="album-footer">

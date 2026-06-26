@@ -7,8 +7,9 @@ class Disco
     private string $lanzamiento;
     private string $portada;
     private array $generos;
+    private string $descripcion;
     private float $precio;
-    private static $createValues = ['id', 'titulo', 'lanzamiento', 'portada', 'precio'];
+    private static $createValues = ['id', 'titulo', 'lanzamiento', 'portada', 'descripcion', 'precio'];
 
     /**
      * Devuelve una instancia del objeto Disco, con todas sus propiedades configuradas
@@ -272,6 +273,25 @@ class Disco
         $PDOStatement->execute([$this->id]);
     }
 
+    /**
+     * Devuelve las primeras x palabras de la descripcion 
+     * @param int $cantidad la cantidad de palabras a extraer (opcional)
+     */
+    public function descripcion_reducida(int $cantidad = 15): string
+    {
+        $texto = $this->descripcion;
+
+        $array = explode(" ", $texto);
+        if (count($array) <= $cantidad) {
+            $resultado = $texto;
+        } else {
+            array_splice($array, $cantidad);
+            $resultado = implode(" ", $array) . "...";
+        }
+
+        return $resultado;
+    }
+
 
     /**
      * Get the value of id
@@ -409,6 +429,26 @@ class Disco
     public function setPrecio($precio)
     {
         $this->precio = $precio;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of descripcion
+     */ 
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set the value of descripcion
+     *
+     * @return  self
+     */ 
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
 
         return $this;
     }

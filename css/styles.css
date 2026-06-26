@@ -21,6 +21,10 @@ main.producto {
   overflow: hidden;
 }
 
+main.datos_de_la_alumna  {
+  background-color: #000;
+}
+
 .texto-acento {
   color: #19e0c7;
 }
@@ -278,6 +282,14 @@ main.producto {
 .album-meta {
   margin-bottom: 6px;
   color: #d0d0d0;
+}
+
+.album-descripcion {
+  color: #cfcfcf;
+  line-height: 1.5;
+  margin-top: 12px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
 }
 
 .album-footer {
