@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 22, 2026 at 03:29 AM
+-- Generation Time: Jun 27, 2026 at 12:56 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -32,7 +32,7 @@ CREATE TABLE `artistas` (
   `nombre_artistico` varchar(256) NOT NULL,
   `descripcion` text NOT NULL,
   `imagen` varchar(256) NOT NULL,
-  `pais_de_origen` enum('Estados Unidos','Reino Unido','Argentina','Italia') NOT NULL,
+  `pais_de_origen` enum('Estados Unidos','Reino Unido','Argentina','Italia','España') NOT NULL,
   `ano_de_formacion` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -65,6 +65,7 @@ CREATE TABLE `discos` (
   `titulo` varchar(256) NOT NULL,
   `lanzamiento` date NOT NULL,
   `portada` varchar(256) NOT NULL,
+  `descripcion` text DEFAULT NULL,
   `precio` decimal(11,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -72,22 +73,22 @@ CREATE TABLE `discos` (
 -- Dumping data for table `discos`
 --
 
-INSERT INTO `discos` (`id`, `artista_id`, `titulo`, `lanzamiento`, `portada`, `precio`) VALUES
-(1, 1, 'Born to die', '2012-12-27', 'born_to_die.webp', 30000),
-(2, 1, 'Honeymoon', '2015-09-18', 'honeymoon.webp', 35000),
-(3, 2, 'AM', '2013-09-06', 'am.webp', 38000),
-(4, 3, 'Encore', '2004-11-12', 'encore.webp', 42000),
-(5, 4, 'Infame', '2003-10-19', 'infame.webp', 32000),
-(6, 5, 'Nevermind', '1991-09-24', 'nevermind.webp', 38000),
-(7, 6, '+', '2011-09-09', '+.webp', 32000),
-(8, 7, 'Red', '2012-10-22', 'red.webp', 37000),
-(9, 8, 'Born This Way', '2011-05-23', 'born_this_way.webp', 28000),
-(10, 9, 'Solo Piano', '2004-01-01', 'solo_piano.webp', 40000),
-(11, 10, 'Master of Puppets', '1986-03-03', 'master_of_puppets.webp', 28500),
-(12, 11, 'Abbey Road', '1969-09-26', 'abbey_road.webp', 34000),
-(13, 7, '1989', '2014-10-27', '1989.webp', 29700),
-(14, 5, 'In Utero', '1993-09-21', 'in_utero.webp', 40000),
-(15, 11, 'Yellow Submarine', '1969-01-17', 'yellow_submarine.webp', 35000);
+INSERT INTO `discos` (`id`, `artista_id`, `titulo`, `lanzamiento`, `portada`, `descripcion`, `precio`) VALUES
+(1, 1, 'Born to die', '2012-12-27', 'born_to_die.webp', 'Álbum melancólico y cinematográfico que combina pop alternativo, arreglos elegantes y una estética nostálgica. Sus canciones construyen una atmósfera íntima, dramática y muy reconocible.', 30000),
+(2, 1, 'Honeymoon', '2015-09-18', 'honeymoon.webp', 'Disco de sonido suave, oscuro y envolvente, marcado por melodías lentas y una producción muy cuidada. Presenta una faceta más madura e introspectiva de la artista.', 35000),
+(3, 2, 'AM', '2013-09-06', 'am.webp', 'Álbum enérgico de rock alternativo con guitarras potentes, ritmos directos y una actitud moderna. Sus canciones combinan fuerza, melodía y un estilo muy característico de la banda.', 38000),
+(4, 3, 'Encore', '2004-11-12', 'encore.webp', 'Disco intenso y personal que mezcla hip hop, rap y pop con una gran carga emocional. Sus letras directas y su producción sólida lo convierten en una obra clave dentro de su estilo.', 42000),
+(5, 4, 'Infame', '2003-10-19', 'infame.webp', 'Álbum argentino de sonido crudo y emocional, con una fuerte presencia del rock alternativo. Sus canciones combinan sensibilidad, energía y letras cargadas de identidad.', 32000),
+(6, 5, 'Nevermind', '1991-09-24', 'nevermind.webp', 'Disco fundamental del grunge y del rock alternativo, conocido por su sonido potente, guitarras distorsionadas y melodías memorables. Marcó a una generación y cambió el rumbo de la música de los años noventa.', 38000),
+(7, 6, '+', '2011-09-09', '+.webp', 'Álbum pop de sonido íntimo y acústico, con canciones simples, cálidas y muy melódicas. Su estilo cercano lo convirtió en una obra muy popular y fácil de reconocer.', 32000),
+(8, 7, 'Red', '2012-10-22', 'red.webp', 'Disco pop con influencias country y letras muy personales. Combina canciones emotivas con momentos más enérgicos, mostrando una etapa de transición artística.', 37000),
+(9, 8, 'Born This Way', '2011-05-23', 'born_this_way.webp', 'Álbum pop bailable y teatral, con una fuerte estética visual y mensajes de identidad, libertad y autoexpresión. Sus canciones mezclan energía, drama y producción electrónica.', 28000),
+(10, 9, 'Solo Piano', '2004-01-01', 'solo_piano.webp', 'Disco íntimo centrado en el piano y la interpretación vocal. Presenta un sonido minimalista, emocional y directo, donde las canciones se apoyan en la sensibilidad de la composición.', 40000),
+(11, 10, 'Master of Puppets', '1986-03-03', 'master_of_puppets.webp', 'Obra esencial del heavy metal, reconocida por sus riffs agresivos, velocidad y precisión. Sus canciones muestran una combinación de potencia, técnica y letras intensas.', 28500),
+(12, 11, 'Abbey Road', '1969-09-26', 'abbey_road.webp', 'Álbum clásico del rock británico, con una producción elegante y canciones que combinan melodía, experimentación y armonías memorables. Es una de las obras más representativas de la banda.', 34000),
+(13, 7, '1989', '2014-10-27', '1989.webp', 'Disco pop brillante y nostálgico, inspirado en sonidos de los años ochenta. Sus canciones combinan melodías pegadizas, producción pulida y una estética romántica.', 29700),
+(14, 5, 'In Utero', '1993-09-21', 'in_utero.webp', 'Álbum de sonido más áspero e introspectivo, con canciones cargadas de tensión y sensibilidad. Mantiene la fuerza del grunge, pero con un tono más oscuro y experimental.', 40000),
+(15, 11, 'Yellow Submarine', '1969-01-17', 'yellow_submarine.webp', 'Disco psicodélico y colorido, con canciones que mezclan pop, rock y elementos experimentales. Su estética lúdica y su imaginación sonora lo hacen muy particular dentro del catálogo de la banda.', 35000);
 
 -- --------------------------------------------------------
 
@@ -224,7 +225,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `email`, `nombre_usuario`, `nombre_completo`, `password`, `rol`) VALUES
-(1, 'usuario@test.com', 'usuario', 'Primer Usuario', '$2y$12$UsjdTCqhwcN8Zi.fdu.OyuMM/tS4GlDyWdkamweGpvRUD6mqWtX2C', 'usuario');
+(1, 'usuario@test.com', 'usuario', 'Primer Usuario', '$2y$12$UsjdTCqhwcN8Zi.fdu.OyuMM/tS4GlDyWdkamweGpvRUD6mqWtX2C', 'usuario'),
+(2, 'mkrvmrn.00@gmail.com', 'admin', 'Admin', '$2y$12$cdFvDOChsKCM9HjuIphOk.ch/Cioh74.rqW7IJAoypD4MUD6fXBcm', 'admin');
 
 -- --------------------------------------------------------
 
@@ -234,10 +236,10 @@ INSERT INTO `usuarios` (`id`, `email`, `nombre_usuario`, `nombre_completo`, `pas
 
 CREATE TABLE `vistas` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nombre` varchar(256) NOT NULL,
-  `titulo` varchar(256) NOT NULL,
-  `activa` tinyint(4) NOT NULL,
-  `restringida` tinyint(1) DEFAULT NULL
+  `nombre` varchar(256) DEFAULT NULL,
+  `titulo` varchar(256) DEFAULT NULL,
+  `activa` tinyint(4) DEFAULT NULL,
+  `restringida` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -249,14 +251,24 @@ INSERT INTO `vistas` (`id`, `nombre`, `titulo`, `activa`, `restringida`) VALUES
 (2, 'catalogo_completo', 'Catálogo', 1, 0),
 (3, 'producto', 'Detalle de Producto', 1, 0),
 (5, 'quienes_somos', '¿Quiénes Somos?', 1, 0),
-(6, 'dashboard', 'Panel de Administración', 1, 0),
+(6, 'dashboard', 'Panel de Administración', 1, 2),
 (15, 'login', 'Log in', 1, 0),
 (16, 'registro', 'Registro', 1, 0),
-(17, 'admin_generos', 'Administración de Géneros', 1, 0),
-(18, 'delete_genero', 'Delete Género', 1, 0),
-(19, 'admin_musicos', 'Administración de Músicos\r\n', 1, 0),
-(20, 'delete_musico', 'Delete Músico', 1, 0),
-(21, 'datos_de_la_alumna', 'Datos de la alumna', 1, 0);
+(17, 'admin_generos', 'Administración de Géneros', 1, 2),
+(18, 'delete_genero', 'Delete Género', 1, 2),
+(19, 'admin_musicos', 'Administración de Músicos\r\n', 1, 2),
+(20, 'delete_musico', 'Delete Músico', 1, 2),
+(21, 'datos_de_la_alumna', 'Datos de la alumna', 1, 0),
+(22, 'delete_artista', 'Eliminación de Artista', 1, 2),
+(23, 'admin_artistas', 'Administración de Artistas', 1, 2),
+(24, 'add_artista', 'Agregar Artista', 1, 2),
+(25, 'edit_artista', 'Edición de Artista', 1, 2),
+(26, 'admin_discos', 'Administración de Discos', 1, 2),
+(27, 'edit_disco', 'Edición de Disco', 1, 2),
+(28, 'add_disco', 'Agregar Disco', 1, 2),
+(29, 'delete_disco', 'Eliminación de Disco', 1, 2),
+(30, 'contacto', 'Contacto', 1, 0),
+(31, 'contacto_enviado', 'Mensaje enviado', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -318,19 +330,19 @@ ALTER TABLE `vistas`
 -- AUTO_INCREMENT for table `artistas`
 --
 ALTER TABLE `artistas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `discos`
 --
 ALTER TABLE `discos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `discos_x_generos`
 --
 ALTER TABLE `discos_x_generos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `generos`
@@ -348,13 +360,13 @@ ALTER TABLE `musicos`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `vistas`
 --
 ALTER TABLE `vistas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables
