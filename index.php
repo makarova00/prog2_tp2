@@ -50,6 +50,11 @@ Autenticacion::verify($vista->getRestringida());
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link <?= $vista->getNombre() === 'contacto' ? 'active' : '' ?>" href="index.php?sec=contacto">
+                                Contacto
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link <?= $vista->getNombre() === 'datos_de_la_alumna' ? 'active' : '' ?>" href="index.php?sec=datos_de_la_alumna">
                                 Datos de la alumna
                             </a>

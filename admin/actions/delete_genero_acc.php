@@ -8,7 +8,6 @@ try {
     $genero = Genero::genero_x_id($id);
     $genero->delete();
     Alerta::add_alerta('success', "El género " . $genero->getNombre() . " se eliminó correctamente");
-
 } catch (Exception $e) {
 
     if ($e->getCode() == 23000) {

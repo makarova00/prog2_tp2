@@ -80,7 +80,7 @@ class Genero
     public function edit(string $nombre)
     {
         $conexion = Conexion::getConexion();
-       $query = "UPDATE generos 
+        $query = "UPDATE generos 
                SET nombre = :nombre 
                WHERE id = :id";
 

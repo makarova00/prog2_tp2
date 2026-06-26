@@ -60,20 +60,20 @@ class Autenticacion
     public static function verify($nivel = 0)
     {
 
-        if (!$nivel) { 
-            return TRUE; 
+        if (!$nivel) {
+            return TRUE;
         }
 
-        if (isset($_SESSION['loggedIn'])) { 
+        if (isset($_SESSION['loggedIn'])) {
 
-            if ($nivel > 1) { 
+            if ($nivel > 1) {
 
                 if (
                     $_SESSION['loggedIn']['rol'] == "admin"
                     or
                     $_SESSION['loggedIn']['rol'] == "superadmin"
                 ) {
-                    return TRUE; 
+                    return TRUE;
                 } else {
 
                     Alerta::add_alerta('danger', "Sus credenciales no tienen permiso para ingresar a esta sección.");

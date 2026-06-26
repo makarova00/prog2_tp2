@@ -435,7 +435,7 @@ class Disco
 
     /**
      * Get the value of descripcion
-     */ 
+     */
     public function getDescripcion()
     {
         return $this->descripcion;
@@ -445,7 +445,7 @@ class Disco
      * Set the value of descripcion
      *
      * @return  self
-     */ 
+     */
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;

@@ -10,7 +10,6 @@ try {
     $disco->delete();
 
     Alerta::add_alerta('success', "El disco " . $disco->getTitulo() . " se eliminó correctamente");
-
 } catch (Exception $e) {
 
     if ($e->getCode() == 23000) {

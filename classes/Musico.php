@@ -83,7 +83,7 @@ class Musico
             'artista_id' => $artista_id
         ]);
     }
-    
+
     /**
      * Edita los datos del músico actual
      * @param string $nombre 

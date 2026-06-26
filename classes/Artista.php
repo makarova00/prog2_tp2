@@ -136,7 +136,8 @@ class Artista
      * @param array $artistasSeleccionados Array con los IDs de los artistas seleccionados
      * @return ?Artista Devuelve un objeto Artista si hay un solo artista seleccionado, o NULL si no hay ninguno o hay más de uno
      */
-    public static function artista_seleccionado(array $artistasSeleccionados): ?Artista{
+    public static function artista_seleccionado(array $artistasSeleccionados): ?Artista
+    {
         if (count($artistasSeleccionados) == 1) {
             return self::artista_x_id($artistasSeleccionados[0]);
         }

@@ -11,10 +11,9 @@ try {
     $artista = Artista::artista_x_id($id);
 
     if (!empty($fileData['tmp_name'])) {
-        
+
         $imagen = Imagen::subirImagen("../../img/artistas", $fileData);
         Imagen::borrarImagen("../../img/artistas/" . $postData['imagen_og']);
-
     } else {
         $imagen = $postData['imagen_og'];
     }
@@ -28,7 +27,6 @@ try {
     );
 
     Alerta::add_alerta('success', "El artista " . $artista->getNombre_artistico() . " se editó correctamente");
-
 } catch (Exception $e) {
 
     Alerta::add_alerta('danger', "El artista no se pudo editar. Póngase en contacto con servicio técnico.");

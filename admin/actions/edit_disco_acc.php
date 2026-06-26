@@ -32,7 +32,6 @@ try {
     );
 
     Alerta::add_alerta('success', "El disco " . $postData['titulo'] . " se editó correctamente");
-
 } catch (Exception $e) {
 
     Alerta::add_alerta('danger', "El disco no se pudo editar. Póngase en contacto con servicio técnico.");

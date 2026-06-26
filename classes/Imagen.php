@@ -15,16 +15,14 @@ class Imagen
             "$directorio/$filename"
         );
 
-          if (!$fileUpload) {
+        if (!$fileUpload) {
             throw new Exception("No de pudo subir la imágen");
-          }else{
+        } else {
             return $filename;
-          }
-
-
+        }
     }
 
-    public static function borrarImagen( string $archivo): bool
+    public static function borrarImagen(string $archivo): bool
     {
 
         if (file_exists($archivo)) {
@@ -36,7 +34,7 @@ class Imagen
             } else {
                 return TRUE;
             }
-        }else{
+        } else {
             return FALSE;
         }
     }

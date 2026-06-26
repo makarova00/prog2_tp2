@@ -10,10 +10,10 @@
             </div>
 
             <div class="text-center mt-4">
-    <a href="index.php?sec=catalogo_completo" class="home-link-catalogo">
-        Ver catálogo →
-    </a>
-</div>
+                <a href="index.php?sec=catalogo_completo" class="home-link-catalogo">
+                    Ver catálogo →
+                </a>
+            </div>
         </div>
     </div>
 </section>

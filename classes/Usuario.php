@@ -36,27 +36,27 @@ class Usuario
     }
 
     /**
- * Encuentra un usuario por su email
- * @param string $email El email del usuario
- * @return ?Usuario Devuelve un objeto Usuario o Null en caso que no se encuentre
- */
-public static function usuario_x_email(string $email): ?Usuario
-{
-    $conexion = Conexion::getConexion();
-    $query = "SELECT * FROM usuarios WHERE email = ?";
+     * Encuentra un usuario por su email
+     * @param string $email El email del usuario
+     * @return ?Usuario Devuelve un objeto Usuario o Null en caso que no se encuentre
+     */
+    public static function usuario_x_email(string $email): ?Usuario
+    {
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM usuarios WHERE email = ?";
 
-    $PDOStatement = $conexion->prepare($query);
-    $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-    $PDOStatement->execute([$email]);
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$email]);
 
-    $result = $PDOStatement->fetch();
+        $result = $PDOStatement->fetch();
 
-    if (!$result) {
-        return null;
+        if (!$result) {
+            return null;
+        }
+
+        return $result;
     }
-
-    return $result;
-}
 
     /**
      * Inserta un nuevo usuario en la base de datos

@@ -4,8 +4,8 @@ $admin = $_GET['admin'] ?? 0;
 
 Autenticacion::log_out();
 
-if($admin){
+if ($admin) {
     header('location: ../index.php?sec=login');
-}else{
+} else {
     header('location: ../../index.php?sec=login');
 }

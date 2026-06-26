@@ -12,7 +12,6 @@ try {
     }
 
     Alerta::add_alerta('success', "El artista " . $artista->getNombre_artistico() . " se eliminó correctamente");
-
 } catch (Exception $e) {
 
     if ($e->getCode() == 23000) {

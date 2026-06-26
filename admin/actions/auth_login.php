@@ -13,7 +13,6 @@ if ($login) {
     } else {
         header('location: ../index.php?sec=dashboard');
     }
-
 } else {
     Alerta::add_alerta('danger', 'El nombre de usuario o la contraseña son incorrectos.');
     header('location: ../index.php?sec=login');
