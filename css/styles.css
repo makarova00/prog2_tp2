@@ -14,15 +14,19 @@ main {
 }
 
 main.home,
-main.quienes_somos,
-main.producto {
+main.quienes_somos {
   display: flex;
   background-color: #000;
   overflow: hidden;
 }
 
-main.datos_de_la_alumna  {
+main.datos_de_la_alumna,
+main.producto {
   background-color: #000;
+}
+
+main.producto {
+  display: flex;
 }
 
 .texto-acento {
@@ -416,7 +420,8 @@ main.datos_de_la_alumna  {
 .producto-detalle {
   background-color: #000;
   color: white;
-  min-height: 100vh;
+  width: 100%;
+  flex: 1;
 }
 
 .producto-img-box {

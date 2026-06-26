@@ -43,14 +43,6 @@ $disco = Disco::producto_x_id($id);
                         <span>Lanzamiento:</span> <?= $disco->getLanzamiento() ?>
                     </p>
 
-                    <p class="producto-meta">
-                        <span>País de origen:</span> <?= $artista->getPais_de_origen() ?>
-                    </p>
-
-                    <p class="producto-meta">
-                        <span>Año de formación:</span> <?= $artista->getAno_de_formacion() ?>
-                    </p>
-
                     <p class="producto-descripcion">
                         <?= $disco->getDescripcion() ?>
                     </p>

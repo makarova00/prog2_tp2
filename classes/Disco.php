@@ -277,7 +277,7 @@ class Disco
      * Devuelve las primeras x palabras de la descripcion 
      * @param int $cantidad la cantidad de palabras a extraer (opcional)
      */
-    public function descripcion_reducida(int $cantidad = 15): string
+    public function descripcion_reducida(int $cantidad = 10): string
     {
         $texto = $this->descripcion;
 
