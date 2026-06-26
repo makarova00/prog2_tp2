@@ -39,6 +39,15 @@ $generos = Genero::listado_completo();
             </div>
 
             <div class="admin-form-field">
+                <label for="descripcion">Descripción</label>
+                <textarea
+                    id="descripcion"
+                    name="descripcion"
+                    class="admin-input admin-textarea"
+                    required></textarea>
+            </div>
+
+            <div class="admin-form-field">
                 <label for="precio">Precio</label>
                 <input type="number" id="precio" name="precio" class="admin-input" required>
             </div>
@@ -53,11 +62,11 @@ $generos = Genero::listado_completo();
 
                 <?PHP foreach ($generos as $genero) { ?>
                     <div class="form-check">
-                        <input 
-                            class="form-check-input" 
-                            type="checkbox" 
-                            name="generos[]" 
-                            value="<?= $genero->getId() ?>" 
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            name="generos[]"
+                            value="<?= $genero->getId() ?>"
                             id="genero_<?= $genero->getId() ?>">
 
                         <label class="form-check-label" for="genero_<?= $genero->getId() ?>">

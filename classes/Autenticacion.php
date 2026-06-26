@@ -13,14 +13,9 @@ class Autenticacion
     {
         $datosUsuario = Usuario::usuario_x_username($usuario);
 
-        echo "<pre>";
-        print_r($datosUsuario);
-        echo "</pre>";
-
         if ($datosUsuario) {
             if (password_verify($password, $datosUsuario->getPassword())) {
 
-                echo "EL PASSWORD ES CORRECTO";
                 $datosLogin['username'] = $datosUsuario->getNombre_usuario();
                 $datosLogin['nombre_completo'] = $datosUsuario->getNombre_completo();
                 $datosLogin['id'] = $datosUsuario->getId();

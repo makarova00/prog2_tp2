@@ -28,6 +28,7 @@ try {
         $postData['titulo'],
         $postData['lanzamiento'],
         $portada,
+        $postData['descripcion'],
         $postData['precio']
     );
 

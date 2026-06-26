@@ -22,6 +22,7 @@ $discos = Disco::catalogo_completo();
                     <th>Artista</th>
                     <th>Lanzamiento</th>
                     <th>Géneros</th>
+                    <th>Descripción</th>
                     <th>Precio</th>
                     <th class="text-end">Acciones</th>
                 </tr>
@@ -44,6 +45,8 @@ $discos = Disco::catalogo_completo();
                         <td><?= $disco->getLanzamiento() ?></td>
 
                         <td><?= $disco->get_generos_nombres() ?></td>
+
+                        <td class="admin-description-cell"><?= $disco->descripcion_reducida()?></td>
 
                         <td><?= $disco->precio_formateado() ?></td>
 

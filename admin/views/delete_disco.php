@@ -14,15 +14,27 @@ $disco = Disco::producto_x_id($id);
 
         <p class="delete-label">Disco seleccionado</p>
 
-        <img 
-            src="../img/covers/<?= $disco->getPortada() ?>" 
-            alt="Portada de <?= $disco->getTitulo() ?>" 
+        <img
+            src="../img/covers/<?= $disco->getPortada() ?>"
+            alt="Portada de <?= $disco->getTitulo() ?>"
             class="admin-delete-img">
 
         <h2><?= $disco->getTitulo() ?></h2>
 
         <p class="delete-extra">
             <?= $disco->getArtista()->getNombre_artistico() ?> · <?= $disco->getLanzamiento() ?>
+        </p>
+
+        <p class="delete-extra">
+            <?= $disco->get_generos_nombres() ?>
+        </p>
+
+        <p class="delete-price">
+            <?= $disco->precio_formateado() ?>
+        </p>
+
+        <p class="delete-description">
+            <?= $disco->descripcion_reducida(25) ?>
         </p>
 
         <div class="admin-actions admin-actions-center">

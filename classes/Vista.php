@@ -30,18 +30,22 @@ class Vista
             if ($viewData->getActiva()) {
                 $resultado = $viewData;
             } else {
-                $viewNoDisp = new self();
+                $view404 = new self();
 
-                $viewNoDisp->nombre = 'no_disponible';
-                $viewNoDisp->titulo = 'Página no disponible';
+                $view404->nombre = '404';
+                $view404->titulo = 'Página no encontrada';
+                $view404->activa = 1;
+                $view404->restringida = 0;
 
-                $resultado = $viewNoDisp;
+                $resultado = $view404;
             }
         } else {
 
             $view404 = new self();
             $view404->nombre = '404';
             $view404->titulo = 'Página no encontrada';
+            $view404->activa = 1;
+            $view404->restringida = 0;
             $resultado = $view404;
         }
 

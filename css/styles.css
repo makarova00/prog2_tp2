@@ -790,10 +790,15 @@ main.contacto_enviado {
   text-align: center;
 }
 
-.dashboardh1 {
+.dashboard h1 {
   font-size: 2.4rem;
   font-weight: 800;
   margin-bottom: 15px;
+}
+
+.dashboard p {
+  color: #555;
+  margin-bottom: 45px;
 }
 
 .dashboardp {
@@ -890,7 +895,7 @@ main.contacto_enviado {
 .delete-extra {
   color: #777;
   font-weight: 700;
-  margin-bottom: 28px;
+  margin-bottom: 10px;
 }
 
 .admin-form-img {
@@ -1154,6 +1159,29 @@ main.contacto_enviado {
   max-width: 360px;
   line-height: 1.5;
   color: #555;
+}
+
+.admin-textarea {
+  min-height: 130px;
+  border-radius: 20px;
+  resize: vertical;
+  padding: 16px 18px;
+  line-height: 1.5;
+}
+
+.delete-price {
+  color: #212529;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.delete-description {
+  max-width: 420px;
+  margin: 0 auto 28px;
+  color: #555;
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 /* ----- DATOS DE LA ALUMNA ----- */
@@ -1817,10 +1845,6 @@ main.contacto_enviado {
     width: 100%;
     min-height: 300px;
     margin-top: 0;
-  }
-
-  .no-resultados-content {
-    padding: 30px 15px;
   }
 
   .no-resultados-content {

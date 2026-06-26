@@ -59,6 +59,15 @@ $generosSeleccionados = $disco->getGeneros();
             </div>
 
             <div class="admin-form-field">
+                <label for="descripcion">Descripción</label>
+                <textarea
+                    id="descripcion"
+                    name="descripcion"
+                    class="admin-input admin-textarea"
+                    required><?= $disco->getDescripcion() ?></textarea>
+            </div>
+
+            <div class="admin-form-field">
                 <label for="precio">Precio</label>
                 <input
                     type="number"

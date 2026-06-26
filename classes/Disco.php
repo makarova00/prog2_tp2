@@ -122,9 +122,9 @@ class Disco
      * Devuelve los datos de un producto en particular
      * @param int $idProducto El ID único del producto a mostrar
      *  
-     * @return ?disco devuelve un objeto disco o null     
+     * @return ?Disco devuelve un objeto disco o null     
      */
-    public static function producto_x_id(int $idProducto): ?disco
+    public static function producto_x_id(int $idProducto): ?Disco
     {
         $conexion = Conexion::getConexion();
         $query = "SELECT discos.*, GROUP_CONCAT(dxg.genero_id) AS generos
@@ -158,25 +158,28 @@ class Disco
      * @param float $precio   
      * @return int El id del disco recién insertado
      */
-    public static function insert($artista_id, $titulo, $lanzamiento, $portada, $precio): int
-    {
+    public static function insert($artista_id, $titulo, $lanzamiento, $portada, $descripcion, $precio): int
+{
 
-        $conexion = Conexion::getConexion();
-        $query = "INSERT INTO discos VALUES (NULL, :artista_id, :titulo, :lanzamiento, :portada, :precio)";
+    $conexion = Conexion::getConexion();
+    $query = "INSERT INTO discos 
+              (artista_id, titulo, lanzamiento, portada, descripcion, precio)
+              VALUES (:artista_id, :titulo, :lanzamiento, :portada, :descripcion, :precio)";
 
-        $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->execute(
-            [
-                'artista_id' => $artista_id,
-                'titulo' => $titulo,
-                'lanzamiento' => $lanzamiento,
-                'portada' => $portada,
-                'precio' => $precio,
-            ]
-        );
+    $PDOStatement = $conexion->prepare($query);
+    $PDOStatement->execute(
+        [
+            'artista_id' => $artista_id,
+            'titulo' => $titulo,
+            'lanzamiento' => $lanzamiento,
+            'portada' => $portada,
+            'descripcion' => $descripcion,
+            'precio' => $precio,
+        ]
+    );
 
-        return $conexion->lastInsertId();
-    }
+    return $conexion->lastInsertId();
+}
 
     /**
      * Crea un vinculo entre un disco y un genero
@@ -221,30 +224,32 @@ class Disco
      * @param string $portada
      * @param float $precio   
      */
-    public function edit($artista_id, $titulo, $lanzamiento, $portada, $precio)
-    {
+    public function edit($artista_id, $titulo, $lanzamiento, $portada, $descripcion, $precio)
+{
 
-        $conexion = Conexion::getConexion();
-        $query = "UPDATE discos SET
-         artista_id = :artista_id,
-         titulo = :titulo,
-         lanzamiento = :lanzamiento,
-         portada = :portada,
-         precio = :precio
-        WHERE id = :id";
+    $conexion = Conexion::getConexion();
+    $query = "UPDATE discos SET
+     artista_id = :artista_id,
+     titulo = :titulo,
+     lanzamiento = :lanzamiento,
+     portada = :portada,
+     descripcion = :descripcion,
+     precio = :precio
+    WHERE id = :id";
 
-        $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->execute(
-            [
-                'id' => $this->id,
-                'artista_id' => $artista_id,
-                'titulo' => $titulo,
-                'lanzamiento' => $lanzamiento,
-                'portada' => $portada,
-                'precio' => $precio
-            ]
-        );
-    }
+    $PDOStatement = $conexion->prepare($query);
+    $PDOStatement->execute(
+        [
+            'id' => $this->id,
+            'artista_id' => $artista_id,
+            'titulo' => $titulo,
+            'lanzamiento' => $lanzamiento,
+            'portada' => $portada,
+            'descripcion' => $descripcion,
+            'precio' => $precio
+        ]
+    );
+}
 
     /**
      * Cuenta la cantidad total de discos cargados en la base de datos

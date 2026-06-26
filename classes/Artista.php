@@ -73,7 +73,7 @@ class Artista
     }
 
     /**
-     * Edita los datos de un personaje en la base de datos
+     * Edita los datos de un artista en la base de datos
      * @param string $nombre_artistico
      * @param string $descripcion
      * @param string $imagen
