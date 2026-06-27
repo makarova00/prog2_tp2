@@ -52,7 +52,7 @@ $disco = Disco::producto_x_id($id);
                             <?= $disco->precio_formateado() ?>
                         </div>
 
-                        <form action="admin/actions/add_item_acc.php" method="GET" class="producto-form">
+                        <form class="producto-form">
                             <div class="cantidad-box">
                                 <label for="q">Cantidad:</label>
                                 <input type="number" class="form-control" value="1" name="q" id="q" min="1">
@@ -60,7 +60,7 @@ $disco = Disco::producto_x_id($id);
 
                             <input type="hidden" value="<?= $id ?>" name="id">
 
-                            <input type="submit" value="AGREGAR A CARRITO" class="producto-btn">
+                            <input type="button" value="AGREGAR A CARRITO" class="producto-btn">
                         </form>
                     </div>
                 </div>
