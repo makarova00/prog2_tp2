@@ -8,7 +8,11 @@ try {
 
     Alerta::add_alerta('success', 'El músico fue eliminado correctamente.');
 } catch (Exception $e) {
-    Alerta::add_alerta('danger', 'No se pudo eliminar el músico.');
+    if ($e->getCode() == 23000) {
+        Alerta::add_alerta('danger', "El músico no se puede eliminar porque está relacionado con otra entidad.");
+    } else {
+        Alerta::add_alerta('danger', "El músico no se puede eliminar. Póngase en contacto con servicio técnico.");
+    }
 }
 
 header('Location: ../index.php?sec=admin_musicos');

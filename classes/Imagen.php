@@ -16,7 +16,7 @@ class Imagen
         );
 
         if (!$fileUpload) {
-            throw new Exception("No de pudo subir la imágen");
+            throw new Exception("No de pudo subir la imagen");
         } else {
             return $filename;
         }

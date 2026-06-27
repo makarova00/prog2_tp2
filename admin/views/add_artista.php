@@ -27,8 +27,8 @@
                     <option value="Estados Unidos">Estados Unidos</option>
                     <option value="Reino Unido">Reino Unido</option>
                     <option value="Argentina">Argentina</option>
-                    <option value="Argentina">Italia</option>
-                    <option value="Argentina">España</option>
+                    <option value="Italia">Italia</option>
+                    <option value="España">España</option>
                 </select>
             </div>
 

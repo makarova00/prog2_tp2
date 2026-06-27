@@ -4,7 +4,7 @@ class Alerta
 {
 
     /**
-     * Registra una alerta en el sitema, guardandola en la sesión
+     * Registra una alerta en el sistema, guardándola en la sesión
      * @param string $tipo el tipo de alerta danger/warning/success
      * @param string $mensaje El contenido de la alerta
      */
