@@ -45,11 +45,6 @@ Autenticacion::verify($vista->getRestringida());
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?= $vista->getNombre() === 'admin_musicos' ? 'active' : '' ?>" href="index.php?sec=admin_musicos">
-                                    Administrar Músicos
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link <?= $vista->getNombre() === 'admin_artistas' ? 'active' : '' ?>" href="index.php?sec=admin_artistas">
                                     Administrar Artistas
                                 </a>

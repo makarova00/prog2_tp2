@@ -131,6 +131,18 @@ main.producto {
   font-weight: 800;
 }
 
+.cart-link {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.cart-link i {
+  line-height: 1;
+}
+
 /* ----- QUIENES SOMOS ----- */
 
 .quienes-section {
@@ -807,10 +819,10 @@ main.contacto_enviado {
 }
 
 .admin-resumen {
-  max-width: 1000px;
+  max-width: 720px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
 

@@ -60,6 +60,11 @@ Autenticacion::verify($vista->getRestringida());
                                 Datos de la alumna
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link cart-link <?= $vista->getNombre() === 'carrito' ? 'active' : '' ?>" href="index.php?sec=carrito">
+                                <i class="bi bi-cart3"></i>
+                            </a>
+                        </li>
                         <?PHP if ($userData) { ?>
                             <li class="nav-item">
                                 <span class="admin-user-badge">

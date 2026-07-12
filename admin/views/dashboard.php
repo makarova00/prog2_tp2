@@ -16,11 +16,6 @@
             <p>Artistas cargados</p>
         </a>
 
-        <a href="index.php?sec=admin_musicos" class="admin-card">
-            <span class="admin-numero"><?= Musico::cantidad_total(); ?></span>
-            <p>Músicos cargados</p>
-        </a>
-
         <a href="index.php?sec=admin_generos" class="admin-card">
             <span class="admin-numero"><?= Genero::cantidad_total(); ?></span>
             <p>Géneros cargados</p>
