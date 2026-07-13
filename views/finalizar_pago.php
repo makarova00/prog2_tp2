@@ -2,82 +2,84 @@
 $items = Carrito::get_carrito();
 ?>
 
-<div class="container">
+<section class="checkout-section">
 
-    <h1 class="text-center mb-5 fw-bold">Finalizar Pago</h1>
+    <div class="checkout-contenido">
 
-    <div class="border rounded p-3 mb-4">
+        <h1>Finalizar pago</h1>
 
-        <div class="row">
+        <div class="checkout-box">
 
+            <section class="checkout-usuario">
+                <h2>Datos de usuario</h2>
+                <p>
+                    <strong>Nombre de usuario:</strong>
+                    <?= $_SESSION['loggedIn']['nombre_completo'] ?>
+                </p>
+            </section>
 
-            <div class="col-12 ">
+            <section class="checkout-resumen">
 
-                <section>
-                    <h2>Datos de Usuario</h2>
-                    <p class="h5 mb-3"><strong>Nombre de usuario: </strong><?= $_SESSION['loggedIn']['nombre_completo'] ?></p>
-                </section>
+                <h2>Resumen de compra</h2>
 
-
-                <section>
-                    <table class="table">
+                <div class="checkout-tabla-box">
+                    <table class="checkout-tabla">
 
                         <thead>
                             <tr>
-                                <th scope="col">Datos del producto</th>
-                                <th scope="col" width="15%">Cantidad</th>
-                                <th class="text-end" scope=" col" width="15%">Precio Unitario</th>
-                                <th class="text-end" scope="col" width="15%">Subtotal</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario</th>
+                                <th>Subtotal</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             <?PHP foreach ($items as $key => $item) { ?>
                                 <tr>
-
-                                    <td class="align-middle">
-                                        <h2 class="h5"><?= $item['producto'] ?></h2>
-                                        <p><?= $item['titulo'] ?></p>
-                                    </td>
-                                    <td class="align-middle">
-                                        <p><?= $item['cantidad'] ?></p>
-                                    </td>
-                                    <td class="text-end align-middle">
-                                        <p class="h5 py-3">$<?= number_format($item['precio'], 2, ",", ".") ?></p>
-                                    </td>
-                                    <td class="text-end align-middle">
-                                        <p class="h5 py-3"> $<?= number_format($item['cantidad'] * $item['precio'], 2, ",", ".") ?></p>
+                                    <td>
+                                        <h3><?= $item['producto'] ?></h3>
                                     </td>
 
+                                    <td>
+                                        <?= $item['cantidad'] ?>
+                                    </td>
+
+                                    <td class="checkout-precio">
+                                        $<?= number_format($item['precio'], 2, ",", ".") ?>
+                                    </td>
+
+                                    <td class="checkout-precio">
+                                        $<?= number_format($item['cantidad'] * $item['precio'], 2, ",", ".") ?>
+                                    </td>
                                 </tr>
                             <?PHP } ?>
 
-                            <tr>
-                                <td colspan="3" class="text-end">
-                                    <h2 class="h5 py-3">Total:</h2>
+                            <tr class="checkout-total-row">
+                                <td colspan="3">Total:</td>
+                                <td class="checkout-total">
+                                    $<?= number_format(Carrito::precio_total(), 2, ",", ".") ?>
                                 </td>
-                                <td class="text-end">
-
-                                    <p class="h5 py-3">$<?= number_format(Carrito::precio_total(), 2, ",", ".") ?></p>
-
-                                </td>
-                                <td></td>
                             </tr>
                         </tbody>
 
-
-
                     </table>
-                </section>
+                </div>
 
+            </section>
 
-                <a href="admin/actions/checkout_acc.php" role="button" class="btn btn-primary w-100">Pagar</a>
+            <div class="checkout-acciones">
+                <a href="index.php?sec=carrito" class="checkout-btn checkout-btn-outline">
+                    Volver al carrito
+                </a>
 
-
+                <a href="admin/actions/checkout_acc.php" class="checkout-btn checkout-btn-acento">
+                    Pagar
+                </a>
             </div>
-
 
         </div>
 
     </div>
 
-</div>
+</section>

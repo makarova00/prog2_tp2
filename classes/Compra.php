@@ -10,18 +10,18 @@ class Compra
     public static function compras_x_idUsuario(int $idUsuario): array
     {
         $conexion = Conexion::getConexion();
+
         $query = "
-        SELECT 
-        discos.id, 
-        discos.fecha, 
-        GROUP_CONCAT(CONCAT(item_x_compra.cantidad, 'x ' ,disco.titulo) SEPARATOR ', ') detalle 
-        
-        FROM discos 
-        JOIN item_x_compra ON discos.id = item_x_compra.compra_id 
-        JOIN discos ON item_x_compra.item_id = disco.id 
-        
-        WHERE discos.id_usuario = ? 
-        GROUP BY (disco.id);";
+    SELECT 
+        compras.id,
+        compras.fecha,
+        compras.importe,
+        GROUP_CONCAT(CONCAT(item_x_compra.cantidad, 'x ', discos.titulo) SEPARATOR ', ') AS detalle
+    FROM compras
+    JOIN item_x_compra ON compras.id = item_x_compra.compra_id
+    JOIN discos ON item_x_compra.item_id = discos.id
+    WHERE compras.id_usuario = ?
+    GROUP BY compras.id, compras.fecha, compras.importe;";
 
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);

@@ -11,6 +11,8 @@ $disco = Disco::producto_x_id($id);
         $artista = $disco->getArtista();
         ?>
 
+        <?= Alerta::get_alertas(); ?>
+
         <div class="container">
             <a href="index.php?sec=catalogo_completo" class="volver-catalogo">
                 ← Volver al catálogo

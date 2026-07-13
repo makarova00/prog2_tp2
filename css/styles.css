@@ -997,6 +997,285 @@ main.carrito {
   margin-bottom: 28px;
 }
 
+main.finalizar_pago {
+  background-color: #000;
+  display: flex;
+}
+
+.checkout-section {
+  width: 100%;
+  flex: 1;
+  background-color: #000;
+  color: #fff;
+  padding: 70px 40px;
+}
+
+.checkout-contenido {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.checkout-contenido h1 {
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 45px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.checkout-box {
+  background-color: #080808;
+  border: 1px solid #222;
+  padding: 45px;
+}
+
+.checkout-usuario {
+  margin-bottom: 42px;
+  border-bottom: 1px solid #222;
+  padding-bottom: 28px;
+}
+
+.checkout-usuario h2,
+.checkout-resumen h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  color: #fff;
+}
+
+.checkout-usuario p {
+  color: #d9d9d9;
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.checkout-usuario strong {
+  color: #19e0c7;
+}
+
+.checkout-tabla-box {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #222;
+  background-color: #000;
+}
+
+.checkout-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.checkout-tabla thead th {
+  background-color: #000;
+  color: #fff;
+  padding: 18px 20px;
+  font-weight: 800;
+  border-bottom: 1px solid #222;
+}
+
+.checkout-tabla tbody td {
+  padding: 20px;
+  vertical-align: middle;
+  border-bottom: 1px solid #222;
+  color: #d9d9d9;
+}
+
+.checkout-tabla h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.checkout-precio {
+  color: #19e0c7 !important;
+  font-weight: 800;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.checkout-total-row td {
+  background-color: #000;
+  font-weight: 800;
+  color: #fff;
+  text-align: right;
+}
+
+.checkout-total {
+  color: #19e0c7 !important;
+  font-size: 1.4rem;
+}
+
+.checkout-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.checkout-btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 11px 28px;
+  font-weight: 800;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.checkout-btn-acento {
+  background-color: #19e0c7;
+  border-color: #19e0c7;
+  color: #000;
+}
+
+.checkout-btn-acento:hover {
+  background-color: transparent;
+  color: #19e0c7;
+}
+
+.checkout-btn-outline {
+  background-color: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+
+.checkout-btn-outline:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+main.panel_usuario {
+  background-color: #000;
+  display: flex;
+}
+
+.panel-usuario-section {
+  width: 100%;
+  flex: 1;
+  background-color: #000;
+  color: #fff;
+  padding: 70px 40px;
+}
+
+.panel-usuario-contenido {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.panel-usuario-contenido h1 {
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 45px;
+  text-transform: uppercase;
+}
+
+.panel-usuario-box {
+  background-color: #080808;
+  border: 1px solid #222;
+  padding: 45px;
+}
+
+.panel-usuario-header {
+  margin-bottom: 32px;
+  border-bottom: 1px solid #222;
+  padding-bottom: 24px;
+}
+
+.panel-usuario-header h2 {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.panel-usuario-header p {
+  color: #cfcfcf;
+  margin: 0;
+}
+
+.panel-usuario-tabla-box {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #222;
+  background-color: #000;
+}
+
+.panel-usuario-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.panel-usuario-tabla thead th {
+  background-color: #000;
+  color: #fff;
+  padding: 18px 20px;
+  font-weight: 800;
+  border-bottom: 1px solid #222;
+}
+
+.panel-usuario-tabla tbody td {
+  padding: 20px;
+  vertical-align: middle;
+  border-bottom: 1px solid #222;
+  color: #d9d9d9;
+}
+
+.panel-usuario-tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.panel-usuario-fecha {
+  color: #19e0c7 !important;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.panel-usuario-vacio {
+  text-align: center;
+  padding: 45px 20px;
+}
+
+.panel-usuario-vacio i {
+  font-size: 3rem;
+  color: #19e0c7;
+  margin-bottom: 18px;
+}
+
+.panel-usuario-vacio h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+}
+
+.panel-usuario-vacio p {
+  color: #cfcfcf;
+  margin-bottom: 26px;
+}
+
+.panel-usuario-btn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #19e0c7;
+  border: 1px solid #19e0c7;
+  color: #000;
+  padding: 11px 28px;
+  border-radius: 999px;
+  font-weight: 800;
+  transition: all 0.2s ease;
+}
+
+.panel-usuario-btn:hover {
+  background-color: transparent;
+  color: #19e0c7;
+}
+
 /* ----- ADMIN ----- */
 
 .dashboard {
@@ -1342,6 +1621,7 @@ main.carrito {
   font-weight: 800;
   font-size: 0.9rem;
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .admin-user-icon {
@@ -2202,4 +2482,86 @@ main.carrito {
   .contacto-enviado-box h1 {
     font-size: 2rem;
   }
+
+  .checkout-section {
+  padding: 45px 20px;
+}
+
+.checkout-contenido h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.checkout-box {
+  padding: 28px 20px;
+}
+
+.checkout-acciones {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.checkout-btn {
+  text-align: center;
+}
+
+.panel-usuario-section {
+  padding: 45px 20px;
+}
+
+.panel-usuario-contenido h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.panel-usuario-box {
+  padding: 28px 20px;
+}
+
+.panel-usuario-vacio h2 {
+  font-size: 1.5rem;
+}
+
+.panel-usuario-tabla thead th,
+.panel-usuario-tabla tbody td {
+  padding: 14px 16px;
+  font-size: 0.9rem;
+}
+
+.panel-usuario-tabla-box {
+  overflow-x: auto;
+}
+
+.panel-usuario-fecha {
+  white-space: nowrap;
+}
+
+.carrito-section {
+  padding: 45px 20px;
+}
+
+.carrito-contenido h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.carrito-tabla thead th,
+.carrito-tabla tbody td {
+  padding: 14px 16px;
+  font-size: 0.9rem;
+}
+
+.carrito-img {
+  width: 90px;
+  height: 90px;
+}
+
+.carrito-acciones {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.carrito-btn {
+  text-align: center;
+}
 }

@@ -3,60 +3,65 @@ $userID = $_SESSION['loggedIn']['id'] ?? FALSE;
 $compras = Compra::compras_x_idUsuario($userID);
 ?>
 
+<section class="panel-usuario-section">
 
+    <div class="panel-usuario-contenido">
 
+        <h1>Panel de usuario</h1>
 
-<div class="container">
+        <div class="panel-usuario-box">
 
-    <h1 class="text-center fs-2 my-5 fw-bold">Panel de Usuario</h1>
-
-    <div class="border rounded p-3 mb-4">
-
-        <div>
             <?= Alerta::get_alertas(); ?>
-        </div>
 
-        <div class="row">
-
-
-            <div class="col-12 ">
-
-                <h2 class="text-center mb-5 fw-bold">Historial de Compras</h2>
-
-
-                
-                <table class="table">
-
-                    <thead>
-                        <tr>
-                            <th scope="col" width="20%">Fecha</th>
-                            <th class="" scope=" col">Detalle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?PHP foreach ($compras as  $C) { ?>
-                            <tr>
-                                <td class="align-middle">
-                                    <p class="h5"><?= $C['fecha'] ?></p>
-                                </td>
-                                <td class="align-middle">
-                                    <p><?= $C['detalle'] ?></p>
-                                </td>
-
-
-                            </tr>
-                        <?PHP } ?>
-
-
-                    </tbody>
-
-
-
-                </table>
+            <div class="panel-usuario-header">
+                <h2>Historial de compras</h2>
+                <p>Acá podés consultar las compras realizadas con tu usuario.</p>
             </div>
 
+            <?PHP if (count($compras)) { ?>
+
+                <div class="panel-usuario-tabla-box">
+                    <table class="panel-usuario-tabla">
+
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Detalle</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?PHP foreach ($compras as $C) { ?>
+                                <tr>
+                                    <td class="panel-usuario-fecha">
+                                        <?= $C['fecha'] ?>
+                                    </td>
+
+                                    <td>
+                                        <?= $C['detalle'] ?>
+                                    </td>
+                                </tr>
+                            <?PHP } ?>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            <?PHP } else { ?>
+
+                <div class="panel-usuario-vacio">
+                    <i class="bi bi-bag-x"></i>
+                    <h2>No hay compras registradas</h2>
+                    <p>Todavía no realizaste ninguna compra.</p>
+                    <a href="index.php?sec=catalogo_completo" class="panel-usuario-btn">
+                        Ver catálogo
+                    </a>
+                </div>
+
+            <?PHP } ?>
 
         </div>
 
     </div>
-</div>
+
+</section>

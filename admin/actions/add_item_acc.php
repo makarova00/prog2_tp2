@@ -4,9 +4,9 @@ require_once "../../functions/autoload.php";
 $id = $_GET['id'] ?? FALSE;
 $q = $_GET['q'] ?? 1;
 
-if($id){
+if ($id) {
     Carrito::add_item($id, $q);
-    header('location: ../../index.php?sec=carrito');
-}else{
-    header('location: ../../index.php');
+    Alerta::add_alerta('success', 'El disco fue agregado al carrito.');
 }
+
+header("Location: ../../index.php?sec=producto&id=$id");

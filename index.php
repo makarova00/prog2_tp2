@@ -67,10 +67,7 @@ Autenticacion::verify($vista->getRestringida());
                         </li>
                         <?PHP if ($userData) { ?>
                             <li class="nav-item">
-                                <span class="admin-user-badge">
-                                    <span class="admin-user-icon">●</span>
-                                    <?= $userData['nombre_completo'] ?>
-                                </span>
+                                <a class="admin-user-badge" href="index.php?sec=panel_usuario"><span class="admin-user-icon">●</span>​ <?= $userData['nombre_completo'] ?? "" ?> </a>
                             </li>
                         <?PHP } ?>
                         <li class="nav-item <?= $userData ? "d-none" : "" ?>">

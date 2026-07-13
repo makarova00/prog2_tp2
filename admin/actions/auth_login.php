@@ -7,12 +7,20 @@ $login = Autenticacion::log_in($postData['username'], $postData['pass']);
 
 if ($login) {
 
-    if ($login == "usuario") {
-        Alerta::add_alerta('danger', 'No tenés permisos para acceder al panel de administración.');
-        header('location: ../index.php?sec=login');
+    if (isset($_SESSION['redirect_after_login'])) {
+        $redirect = $_SESSION['redirect_after_login'];
+        unset($_SESSION['redirect_after_login']);
+
+        header("location: ../../$redirect");
     } else {
-        header('location: ../index.php?sec=dashboard');
+
+        if ($login == "usuario") {
+            header('location: ../../index.php?sec=home');
+        } else {
+            header('location: ../index.php?sec=dashboard');
+        }
     }
+
 } else {
     Alerta::add_alerta('danger', 'El nombre de usuario o la contraseña son incorrectos.');
     header('location: ../index.php?sec=login');

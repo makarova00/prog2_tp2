@@ -30,7 +30,9 @@ $items = Carrito::get_carrito();
                             <?PHP foreach ($items as $id => $item) { ?>
                                 <tr>
                                     <td>
-                                        <img src="img/covers/<?= $item['portada'] ?>" alt="Imagen ilustrativa de <?= $item['producto'] ?>" class="carrito-img">
+                                        <a href="index.php?sec=producto&id=<?= $id ?>" class="carrito-link-img">
+                                            <img src="img/covers/<?= $item['portada'] ?>" alt="Imagen ilustrativa de <?= $item['producto'] ?>" class="carrito-img">
+                                        </a>
                                     </td>
 
                                     <td>
