@@ -2,84 +2,97 @@
 $items = Carrito::get_carrito();
 ?>
 
-<h1 class="text-center fs-2 my-5"> Carrito de Compras</h1>
+<section class="carrito-section">
 
-<div class="container my-4">
+    <div class="carrito-contenido">
 
-    <?PHP if (count($items)) { ?>
+        <h1>Carrito de compras</h1>
 
-        <form action="admin/actions/update_items_acc.php" method="POST">
+        <?PHP if (count($items)) { ?>
 
-            <table class="table">
+            <form action="admin/actions/update_items_acc.php" method="POST">
 
-                <thead>
-                    <tr>
-                        <th scope="col" width="15%">Portada</th>
-                        <th scope="col">Datos del producto</th>
-                        <th scope="col" width="15%">Cantidad</th>
-                        <th class="text-end" scope=" col" width="15%">Precio Unitario</th>
-                        <th class="text-end" scope="col" width="15%">Subtotal</th>
-                        <th class="text-end" scope="col" width="10%"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?PHP foreach ($items as $id => $item) { ?>
-                        <tr>
-                            <td><img src="img/covers/<?= $item['portada'] ?>" alt="Imágen Illustrativa de <?= $item['titulo'] ?>" class="img-fluid rounded shadow-sm"></td>
+                <div class="carrito-tabla-box">
+                    <table class="carrito-tabla">
 
-                            <td class="align-middle">
-                                <h2 class="h5"><?= $item['producto'] ?></h2>
-                                <p><?= $item['titulo'] ?></p>
-                            </td>
-                            <td class="align-middle">
-                                <label for="q_<?= $id ?>" class="visually-hidden">Cantidad</label>
-                                <input
-                                    type="number"
-                                    class="form-control"
-                                    value="<?= $item['cantidad'] ?>"
-                                    id="q_<?= $id ?>"
-                                    name="q[<?= $id ?>]">
-                            </td>
-                            <td class="text-end align-middle">
-                                <p class="h5 py-3">$<?= number_format($item['precio'], 2, ",", ".") ?></p>
-                            </td>
-                            <td class="text-end align-middle">
-                                <p class="h5 py-3"> $<?= number_format($item['cantidad'] * $item['precio'], 2, ",", ".") ?></p>
-                            </td>
-                            <td class="text-end align-middle">
-                                <a href="admin/actions/remove_item_acc.php?id=<?= $id ?>" class="btn btn-sm btn-danger">Eliminar</a>
-                            </td>
-                        </tr>
-                    <?PHP } ?>
+                        <thead>
+                            <tr>
+                                <th>Portada</th>
+                                <th>Datos del producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario</th>
+                                <th>Subtotal</th>
+                                <th></th>
+                            </tr>
+                        </thead>
 
-                    <tr>
-                        <td colspan="4" class="text-end">
-                            <h2 class="h5 py-3">Total:</h2>
-                        </td>
-                        <td class="text-end">
+                        <tbody>
+                            <?PHP foreach ($items as $id => $item) { ?>
+                                <tr>
+                                    <td>
+                                        <img src="img/covers/<?= $item['portada'] ?>" alt="Imagen ilustrativa de <?= $item['producto'] ?>" class="carrito-img">
+                                    </td>
 
-                            <p class="h5 py-3">$<?= number_format(Carrito::precio_total(), 2, ",", ".") ?></p>
+                                    <td>
+                                        <h2><?= $item['producto'] ?></h2>
+                                    </td>
 
-                        </td>
-                        <td></td>
-                    </tr>
-                </tbody>
+                                    <td>
+                                        <label for="q_<?= $id ?>" class="visually-hidden">Cantidad</label>
+                                        <input
+                                            type="number"
+                                            class="carrito-input"
+                                            value="<?= $item['cantidad'] ?>"
+                                            id="q_<?= $id ?>"
+                                            name="q[<?= $id ?>]">
+                                    </td>
 
+                                    <td class="carrito-precio">
+                                        $<?= number_format($item['precio'], 2, ",", ".") ?>
+                                    </td>
 
+                                    <td class="carrito-precio">
+                                        $<?= number_format($item['cantidad'] * $item['precio'], 2, ",", ".") ?>
+                                    </td>
 
-            </table>
+                                    <td>
+                                        <a href="admin/actions/remove_item_acc.php?id=<?= $id ?>" class="carrito-btn carrito-btn-danger">Eliminar</a>
+                                    </td>
+                                </tr>
+                            <?PHP } ?>
 
-            <div class="d-flex justify-content-end gap-2">
-                <input type="submit" value="Actualizar Cantidades" class="btn btn-warning">
-                <a href="index.php?sec=catalogo_completo" role="button" class=" btn btn-info">Seguir comprando</a>
-                <a href="admin/actions/clear_items_acc.php" role="button" class="btn btn-danger">Vaciar Carrito</a>
-                <a href="index.php?sec=finalizar_pago" role="button" class="btn btn-primary">Finalizar Compra</a>
+                            <tr class="carrito-total-row">
+                                <td colspan="4">Total:</td>
+                                <td class="carrito-total">
+                                    $<?= number_format(Carrito::precio_total(), 2, ",", ".") ?>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="carrito-acciones">
+                    <input type="submit" value="Actualizar Cantidades" class="carrito-btn carrito-btn-acento">
+                    <a href="index.php?sec=catalogo_completo" class="carrito-btn carrito-btn-outline">Seguir comprando</a>
+                    <a href="admin/actions/clear_items_acc.php" class="carrito-btn carrito-btn-danger">Vaciar Carrito</a>
+                    <a href="index.php?sec=finalizar_pago" class="carrito-btn carrito-btn-final">Finalizar Compra</a>
+                </div>
+
+            </form>
+
+        <?PHP } else { ?>
+
+            <div class="carrito-vacio">
+                <i class="bi bi-cart-x"></i>
+                <h2>Su carrito está vacío</h2>
+                <p>Podés volver al catálogo para elegir algún disco.</p>
+                <a href="index.php?sec=catalogo_completo" class="carrito-btn carrito-btn-acento">Ver catálogo</a>
             </div>
-        </form>
 
-    <?PHP } else { ?>
-        <h2 class="text-center mb-5 text-danger">Su carrito esta vacio</h2>
-    <?PHP } ?>
+        <?PHP } ?>
 
+    </div>
 
-</div>
+</section>
