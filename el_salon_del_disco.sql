@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 27, 2026 at 02:19 AM
+-- Generation Time: Jul 13, 2026 at 03:42 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -52,6 +52,30 @@ INSERT INTO `artistas` (`id`, `nombre_artistico`, `descripcion`, `imagen`, `pais
 (9, 'Ludovico Einaudi', 'Ludovico Einaudi es un compositor y pianista italiano conocido por su estilo minimalista y emocional. Su música combina elementos de la música clásica contemporánea con influencias ambientales, creando composiciones íntimas y evocadoras.', 'ludovico_einaudi.webp', 'Italia', '1982'),
 (10, 'Metallica', 'Metallica es una banda estadounidense de heavy metal conocida por su sonido potente, riffs agresivos y gran influencia en la música metal. Sus composiciones combinan velocidad, técnica y letras intensas, convirtiéndolos en una de las bandas más importantes del género.', 'metallica.webp', 'Estados Unidos', '1981'),
 (11, 'The Beatles', 'The Beatles fue una banda británica considerada una de las más influyentes de la historia de la música. Su sonido evolucionó desde el pop rock hacia composiciones más experimentales, marcando generaciones con melodías icónicas y una creatividad innovadora.', 'the_beatles.webp', 'Reino Unido', '1960');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `compras`
+--
+
+CREATE TABLE `compras` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_usuario` int(10) UNSIGNED NOT NULL,
+  `fecha` date NOT NULL,
+  `importe` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `compras`
+--
+
+INSERT INTO `compras` (`id`, `id_usuario`, `fecha`, `importe`) VALUES
+(1, 2, '2026-07-13', 126500),
+(2, 2, '2026-07-13', 1600),
+(3, 2, '2026-07-13', 1600),
+(4, 2, '2026-07-13', 38000),
+(5, 2, '2026-07-13', 1600);
 
 -- --------------------------------------------------------
 
@@ -163,47 +187,25 @@ INSERT INTO `generos` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `musicos`
+-- Table structure for table `item_x_compra`
 --
 
-CREATE TABLE `musicos` (
+CREATE TABLE `item_x_compra` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nombre` varchar(256) NOT NULL,
-  `artista_id` int(10) UNSIGNED NOT NULL
+  `compra_id` int(10) UNSIGNED NOT NULL,
+  `item_id` int(10) UNSIGNED NOT NULL,
+  `cantidad` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `musicos`
+-- Dumping data for table `item_x_compra`
 --
 
-INSERT INTO `musicos` (`id`, `nombre`, `artista_id`) VALUES
-(28, 'Elizabeth Woolridge Grant', 1),
-(29, 'Alex Turner', 2),
-(30, 'Jamie Cook', 2),
-(31, 'Nick O\'Malley', 2),
-(32, 'Matt Helders', 2),
-(33, 'Marshall Bruce Mathers III', 3),
-(34, 'Adrián Dárgelos', 4),
-(35, 'Diego Tuñón', 4),
-(36, 'Diego Uma', 4),
-(37, 'Mariano Roger', 4),
-(38, 'Gabriel Manelli', 4),
-(39, 'Diego Castellano', 4),
-(40, 'Kurt Cobain', 5),
-(41, 'Krist Novoselic', 5),
-(42, 'Dave Grohl', 5),
-(43, 'Edward Christopher Sheeran', 6),
-(44, 'Taylor Alison Swift', 7),
-(45, 'Stefani Joanne Angelina Germanotta', 8),
-(46, 'Ludovico Einaudi', 9),
-(47, 'James Hetfield', 10),
-(48, 'Lars Ulrich', 10),
-(49, 'Kirk Hammett', 10),
-(50, 'Robert Trujillo', 10),
-(51, 'John Lennon', 11),
-(52, 'Paul McCartney', 11),
-(53, 'George Harrison', 11),
-(54, 'Ringo Starr', 11);
+INSERT INTO `item_x_compra` (`id`, `compra_id`, `item_id`, `cantidad`) VALUES
+(1, 1, 1, 2),
+(2, 1, 3, 1),
+(3, 1, 11, 1),
+(6, 4, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -268,7 +270,10 @@ INSERT INTO `vistas` (`id`, `nombre`, `titulo`, `activa`, `restringida`) VALUES
 (28, 'add_disco', 'Agregar Disco', 1, 2),
 (29, 'delete_disco', 'Eliminación de Disco', 1, 2),
 (30, 'contacto', 'Contacto', 1, 0),
-(31, 'contacto_enviado', 'Mensaje enviado', 1, 0);
+(31, 'contacto_enviado', 'Mensaje enviado', 1, 0),
+(33, 'carrito', 'Carrito de Compras', 1, 0),
+(34, 'panel_usuario', 'Panel usuario', 1, 1),
+(35, 'finalizar_pago', 'Finalizar Pago', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -279,6 +284,13 @@ INSERT INTO `vistas` (`id`, `nombre`, `titulo`, `activa`, `restringida`) VALUES
 --
 ALTER TABLE `artistas`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `compras`
+--
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indexes for table `discos`
@@ -302,11 +314,12 @@ ALTER TABLE `generos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `musicos`
+-- Indexes for table `item_x_compra`
 --
-ALTER TABLE `musicos`
+ALTER TABLE `item_x_compra`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_musicos_artistas` (`artista_id`);
+  ADD KEY `compra_id` (`compra_id`),
+  ADD KEY `item_id` (`item_id`);
 
 --
 -- Indexes for table `usuarios`
@@ -330,31 +343,37 @@ ALTER TABLE `vistas`
 -- AUTO_INCREMENT for table `artistas`
 --
 ALTER TABLE `artistas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `compras`
+--
+ALTER TABLE `compras`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `discos`
 --
 ALTER TABLE `discos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `discos_x_generos`
 --
 ALTER TABLE `discos_x_generos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `musicos`
+-- AUTO_INCREMENT for table `item_x_compra`
 --
-ALTER TABLE `musicos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+ALTER TABLE `item_x_compra`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
@@ -366,11 +385,17 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `vistas`
 --
 ALTER TABLE `vistas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `compras`
+--
+ALTER TABLE `compras`
+  ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `discos`
@@ -386,10 +411,11 @@ ALTER TABLE `discos_x_generos`
   ADD CONSTRAINT `fk_discos_x_generos_discos` FOREIGN KEY (`disco_id`) REFERENCES `discos` (`id`);
 
 --
--- Constraints for table `musicos`
+-- Constraints for table `item_x_compra`
 --
-ALTER TABLE `musicos`
-  ADD CONSTRAINT `fk_musicos_artistas` FOREIGN KEY (`artista_id`) REFERENCES `artistas` (`id`);
+ALTER TABLE `item_x_compra`
+  ADD CONSTRAINT `item_x_compra_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `discos` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `item_x_compra_ibfk_2` FOREIGN KEY (`compra_id`) REFERENCES `compras` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
